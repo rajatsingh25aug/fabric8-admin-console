@@ -1,5 +1,5 @@
 <!--navbar starts-->
-<div class="container-fluid" *ngIf="users">
+<div class="container-fluid" *ngIf="users;else noUser">
   <div class="row toolbar-pf">
     <div class="col-sm-12">
       <form class="toolbar-pf-actions" data-dpmaxz-eid="1">
@@ -47,10 +47,7 @@
 <li><a href="#">Separated Link</a></li>
 </ul>
 </div>
-
         </div>
-
-
         <div class="toolbar-pf-action-right">
           <div class="form-group toolbar-pf-find">
             <button class="btn btn-link btn-find" type="button">
@@ -82,15 +79,17 @@
     </div><!-- /col -->
   </div><!-- /row -->
 </div>
-
+<!--no user found-->
+<ng-template #noUser>
+  <h4>No User Found</h4>
+</ng-template>
+<!--no user found end-->
 <!--navbar ends-->
-
-
-<div *ngFor="let user of users">
+<div *ngFor="let user of users" id="usersID">
     <div class="list-view-pf-main-info">
       <div class="list-view-pf-left">
         <!-- <span class="fa fa-plane list-view-pf-icon-sm"></span> -->
-        <span><img src="{{user.attributes.imageURL}}" style="width:50px;border-radius:60%;"></span>
+        <span><a href="/profile"><img src="{{user.attributes.imageURL}}" style="width:50px;border-radius:60%;"></a></span>
       </div>
       <div class="list-view-pf-body">
         <div class="list-view-pf-description">
@@ -100,15 +99,72 @@
         </div>
         <div class="list-view-pf-additional-info">
           <div class="list-view-pf-additional-info-item">
-            <span class="pficon pficon-screen"></span>
-            <strong><h4>{{user.attributes.email }}</h4></strong>
-            <div style="margin: 20px 0;">
-                <a href="" class="btn btn-default" data-toggle="popover" data-html="true" title="" data-content="Empty Title example.
-                  This fis more information about a smartproxy. This is more information about a smartproxy. This is more information about a smartproxy.">Click To find Bio
-                </a>
+            <span class="pficon pficon-screen" style="float:left;"></span>
+            <strong *ngIf="user.attributes.email;else noEmail"><h4>{{user.attributes.email }}</h4></strong>
+            <ng-template #noEmail>
+              <h4>No email present</h4>
+            </ng-template>
+            
+            <div style="margin: 20px 0; float:left;">
+                <!-- <button class="btn btn-default" data-target="#myModal">Click To find Profile</button> -->
+                <button class="btn btn-default" data-toggle="modal" data-target="#myModal" >View Profile</button>
+                 <!--Modal starts-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" data-target="#usersID" aria-hidden="true">
+              <span class="pficon pficon-close"  data-dismiss="modal"></span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Profile Details</h4>
+          </div>
+          <div class="modal-body">
+            <!-- <form class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-3 control-label" for="textInput-modal-markup">{{user.attributes.fullName}}</label>
+                <div class="col-sm-9">
+                  <input type="text" id="textInput-modal-markup" class="form-control"></div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label" for="textInput2-modal-markup">{{user.attributes.email}}</label>
+                <div class="col-sm-9">
+                  <input type="text" id="textInput2-modal-markup" class="form-control"></div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label" for="textInput3-modal-markup">Field Three</label>
+                <div class="col-sm-9">
+                  <input type="text" id="textInput3-modal-markup" class="form-control">
+                </div>
+              </div>
+            </form> -->
+            <!--POP UP CLASS STARTS-->
+
+            <h2 style="text-align:center">User Profile Card</h2>
+              <div class="card">
+                <img src="{{user.attributes.imageURL}}" alt="{{user.attributes.fullName}}" style="width:50%">
+                    <h1>{{user.attributes.fullName}}</h1>
+                        <p class="titleModal">{{user.attributes.bio}}</p>
+                            <p>{{user.attributes.username}}</p>
+                              <div style="margin: 24px 0;">
+                                <a href="#" class="aModal"><i class="fa fa-dribbble"></i></a> 
+                                <a href="#" class="aModal"><i class="fa fa-twitter"></i></a>  
+                                <a href="#" class="aModal"><i class="fa fa-linkedin"></i></a>  
+                                <a href="#" class="aModal"><i class="fa fa-facebook"></i></a> 
+                            </div>
+                            <p><button class="buttonModal">Contact</button></p>
+                </div>
+
+            <!--POP UP CLASS ENDS-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Modal Ends-->
+
               </div>
           </div>
         </div>
       </div>
     </div>
     </div>
+   

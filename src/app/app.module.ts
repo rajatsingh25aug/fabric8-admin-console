@@ -13,6 +13,9 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { SearchUserComponent } from './components/search-user/search-user.component';
 import { ShowUserComponent } from './components/show-user/show-user.component';
 import { DataStoreService } from './services/data-store.service';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ToastNotificationModule } from 'patternfly-ng/notification';
+import { AboutModalModule } from 'patternfly-ng';
 
 @NgModule({
   declarations: [
@@ -22,12 +25,14 @@ import { DataStoreService } from './services/data-store.service';
     PageNotFoundComponent,
     HeaderComponent,
     SearchUserComponent,
-    ShowUserComponent
+    ShowUserComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToastNotificationModule,
   ],
   providers: [
     AuthenticationService,
