@@ -13,7 +13,6 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { SearchUserComponent } from './components/search-user/search-user.component';
 import { ShowUserComponent } from './components/show-user/show-user.component';
 import { DataStoreService } from './services/data-store.service';
-import { ProfileComponent } from './components/profile/profile.component';
 import { ToastNotificationModule } from 'patternfly-ng/notification';
 import { ListModule } from 'patternfly-ng';
 // NGX Bootstrap
@@ -29,7 +28,6 @@ import { TooltipConfig, TooltipModule } from 'ngx-bootstrap/tooltip';
     HeaderComponent,
     SearchUserComponent,
     ShowUserComponent,
-    ProfileComponent
   ],
   imports: [
     BrowserModule,
