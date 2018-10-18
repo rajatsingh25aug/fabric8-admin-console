@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { AUTH_API_URL, AuthenticationService, SSO_API_URL, REALM, WIT_API_PROXY, AuthInterceptor } from 'ngx-login-client';
 
 import { AppComponent } from './app.component';
@@ -15,7 +15,10 @@ import { ShowUserComponent } from './components/show-user/show-user.component';
 import { DataStoreService } from './services/data-store.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ToastNotificationModule } from 'patternfly-ng/notification';
-import { AboutModalModule } from 'patternfly-ng';
+import { ListModule } from 'patternfly-ng';
+// NGX Bootstrap
+import { BsDropdownConfig, BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipConfig, TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { AboutModalModule } from 'patternfly-ng';
     HttpClientModule,
     AppRoutingModule,
     ToastNotificationModule,
+    ListModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   providers: [
     AuthenticationService,
@@ -42,8 +48,13 @@ import { AboutModalModule } from 'patternfly-ng';
     { provide: SSO_API_URL, useValue: 'https://sso.prod-preview.openshift.io/api/' },
     { provide: WIT_API_PROXY, useValue: 'https://prod-preview.openshift.io/api/' },
     { provide: REALM, useValue: 'realm' },
-    DataStoreService
+    DataStoreService,
+    BsDropdownConfig,
+    TooltipConfig
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+],
 })
 export class AppModule { }

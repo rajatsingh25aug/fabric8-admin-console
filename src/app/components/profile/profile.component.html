@@ -1,0 +1,36 @@
+<p>
+  profile works!
+</p>
+
+
+<!-- Expansion starts-->
+<div class="padding-15">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <pfng-list   
+            [config]="listConfig"
+            [expandTemplate]="expandTemplate"
+            [items]="items"
+            [itemTemplate]="itemTemplate">
+          <ng-template #itemTemplate let-item="item">
+            <div class="list-pf-left">
+              <span class="fa {{item.typeIcon}} list-pf-icon list-pf-icon-bordered list-pf-icon-small"></span>
+            </div>
+            <div class="list-pf-content-wrapper">
+              <div class="list-pf-main-content">
+                <div class="list-pf-title">{{item.name}}</div>
+                <div class="list-pf-description text-overflow-pf">{{item.address}}</div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template #expandTemplate let-item="item" let-index="index">
+           {{item.city}}
+          </ng-template>
+        </pfng-list>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Expansion Ends-->

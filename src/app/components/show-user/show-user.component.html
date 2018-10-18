@@ -1,83 +1,32 @@
 <!--navbar starts-->
-<div class="container-fluid" *ngIf="users;else noUser">
+<div class="container-fluid" *ngIf="items;else noUser">
   <div class="row toolbar-pf">
-    <div class="col-sm-12">
-      <form class="toolbar-pf-actions" data-dpmaxz-eid="1">
-        <div class="form-group toolbar-pf-filter">
-          <label class="sr-only" for="filter">Name</label>
-          <div class="input-group">
-            <div class="input-group-btn">
-              <button type="button" class="btn btn-default dropdown-toggle" id="input-filter-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Name <span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li class="selected"><a href="#">Name</a></li>
-                <li><a href="#">Type</a></li>
-                <li><a href="#">Color</a></li>
-              </ul>
-            </div><!-- /btn-group -->
-            <!-- <input #filterbyName type="text" class="form-control" id="filter" placeholder="Filter By Name..." data-dpmaxz-eid="2"> -->
-          </div><!-- /input-group -->
-        </div>
-        <div class="form-group">
-          <div class="dropdown btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" id="filter-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Name <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li class="selected"><a href="#">Name</a></li>
-              <li><a href="#">Type</a></li>
-              <li><a href="#">Last Modified</a></li>
-            </ul>
-          </div>
-          <button class="btn btn-link" type="button" (click)="sort('fullName','desc')">
-            <span class="fa fa-sort-alpha-desc"></span>
-          </button>
-          <button class="btn btn-link" type="button" (click)="sort('fullName','asc')">
-            <span class="fa fa-sort-alpha-asc"></span>
-          </button>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-default" type="button" (click)="sort('email','asc')">Sort By Mail</button>
-          <div class="dropdown btn-group dropdown-kebab-pf">
-<button class="btn btn-link dropdown-toggle" type="button" id="dropdownKebab" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-<span class="fa fa-ellipsis-v"></span>
-</button>
-<ul class="dropdown-menu " aria-labelledby="dropdownKebab">
-<li><a href="#">Action</a></li>
-<li><a href="#">Another Action</a></li>
-<li><a href="#"> Something Else Here</a></li>
-<li role="separator" class="divider"></li>
-<li><a href="#">Separated Link</a></li>
-</ul>
-</div>
-        </div>
-        <div class="toolbar-pf-action-right">
-          <div class="form-group toolbar-pf-find">
-            <button class="btn btn-link btn-find" type="button">
-              <span class="fa fa-search"></span>
-            </button>
-            <div class="find-pf-dropdown-container">
-              <input #find  type="text" class="form-control" id="find" placeholder="Find By Keyword..." data-dpmaxz-eid="3" (keyup.enter)="filterUser(find.value)">
-              <div class="find-pf-buttons">
-                <span class="find-pf-nums">1 of 3</span>
-                <button class="btn btn-link" type="button">
-                  <span class="fa fa-angle-up"></span>
-                </button>
-                <button class="btn btn-link" type="button">
-                  <span class="fa fa-angle-down"></span>
-                </button>
-                <button class="btn btn-link btn-find-close" type="button">
-                  <span class="pficon pficon-close"></span>
-                </button>
+     <div class="col-sm-12">
+        <form class="toolbar-pf-actions" data-dpmaxz-eid="1">
+           <div class="form-group">
+              <button class="btn btn-link" type="button" (click)="sort('fullName','desc')">
+              <span class="fa fa-sort-alpha-desc"></span>
+              </button>
+              <button class="btn btn-link" type="button" (click)="sort('fullName','asc')">
+              <span class="fa fa-sort-alpha-asc"></span>
+              </button>
+           </div>
+           <div class="form-group">
+              <button class="btn btn-default" type="button" (click)="sort('email','asc')">Sort By Mail (ascending)</button>
+           </div>
+           <div class="form-group">
+              <button class="btn btn-default" type="button" (click)="sort('email','desc')">Sort By Mail (descending)</button>
+           </div>
+           <div class="toolbar-pf-action-right">
+              <div class="form-group toolbar-pf-find">
+                 <div class="find-pf-dropdown-container">
+                    <input #find  type="text" class="form-control" id="find" placeholder="Find By Keyword..."  (keyup.enter)="filterUser(find.value)">
+                 </div>
               </div>
-            </div>
-          </div>
-          <div class="form-group toolbar-pf-view-selector">
-            <button class="btn btn-link " data-dpmaxz-eid="4"><i class="fa fa-th"></i></button>
-            <button class="btn btn-link " data-dpmaxz-eid="5"><i class="fa fa-th-large"></i></button>
-            <button class="btn btn-link " data-dpmaxz-eid="6"><i class="fa fa-th-list"></i></button>
-          </div>
-        </div>
-      </form>
-    </div><!-- /col -->
-  </div><!-- /row -->
+           </div>
+        </form>
+     </div>
+  </div>
 </div>
 <!--no user found-->
 <ng-template #noUser>
@@ -85,86 +34,33 @@
 </ng-template>
 <!--no user found end-->
 <!--navbar ends-->
-<div *ngFor="let user of users" id="usersID">
-    <div class="list-view-pf-main-info">
-      <div class="list-view-pf-left">
-        <!-- <span class="fa fa-plane list-view-pf-icon-sm"></span> -->
-        <span><a href="/profile"><img src="{{user.attributes.imageURL}}" style="width:50px;border-radius:60%;"></a></span>
-      </div>
-      <div class="list-view-pf-body">
-        <div class="list-view-pf-description">
-          <div class="list-group-item-heading">
-              <h3>{{user.attributes.fullName }}</h3>
-          </div>
+<!-- Expansion starts-->
+<div class="padding-15" *ngIf="items">
+  <div class="row">
+     <div class="col-sm-12">
+        <div class="form-group">
+           <pfng-list   
+           [config]="listConfig"
+           [expandTemplate]="expandTemplate"
+           [items]="items"
+           [itemTemplate]="itemTemplate">
+           <ng-template #itemTemplate let-item="item">
+              <div class="list-pf-left">
+                 <span class="fa list-pf-icon list-pf-icon-bordered list-pf-icon-small"><img src="{{item.attributes.imageURL}}" style="width:50px;border-radius:50px;"></span>
+              </div>
+              <div class="list-pf-content-wrapper">
+                 <div class="list-pf-main-content">
+                    <div class="list-pf-title">{{item.attributes.fullName}}</div>
+                    <div class="list-pf-description text-overflow-pf">{{item.attributes.username}}</div>
+                 </div>
+              </div>
+           </ng-template>
+           <ng-template #expandTemplate let-item="item" let-index="index">
+              <span>{{item.attributes.company}}</span>
+           </ng-template>
+           </pfng-list>
         </div>
-        <div class="list-view-pf-additional-info">
-          <div class="list-view-pf-additional-info-item">
-            <span class="pficon pficon-screen" style="float:left;"></span>
-            <strong *ngIf="user.attributes.email;else noEmail"><h4>{{user.attributes.email }}</h4></strong>
-            <ng-template #noEmail>
-              <h4>No email present</h4>
-            </ng-template>
-            
-            <div style="margin: 20px 0; float:left;">
-                <!-- <button class="btn btn-default" data-target="#myModal">Click To find Profile</button> -->
-                <button class="btn btn-default" data-toggle="modal" data-target="#myModal" >View Profile</button>
-                 <!--Modal starts-->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" data-target="#usersID" aria-hidden="true">
-              <span class="pficon pficon-close"  data-dismiss="modal"></span>
-            </button>
-            <h4 class="modal-title" id="myModalLabel">Profile Details</h4>
-          </div>
-          <div class="modal-body">
-            <!-- <form class="form-horizontal">
-              <div class="form-group">
-                <label class="col-sm-3 control-label" for="textInput-modal-markup">{{user.attributes.fullName}}</label>
-                <div class="col-sm-9">
-                  <input type="text" id="textInput-modal-markup" class="form-control"></div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-3 control-label" for="textInput2-modal-markup">{{user.attributes.email}}</label>
-                <div class="col-sm-9">
-                  <input type="text" id="textInput2-modal-markup" class="form-control"></div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-3 control-label" for="textInput3-modal-markup">Field Three</label>
-                <div class="col-sm-9">
-                  <input type="text" id="textInput3-modal-markup" class="form-control">
-                </div>
-              </div>
-            </form> -->
-            <!--POP UP CLASS STARTS-->
-
-            <h2 style="text-align:center">User Profile Card</h2>
-              <div class="card">
-                <img src="{{user.attributes.imageURL}}" alt="{{user.attributes.fullName}}" style="width:50%">
-                    <h1>{{user.attributes.fullName}}</h1>
-                        <p class="titleModal">{{user.attributes.bio}}</p>
-                            <p>{{user.attributes.username}}</p>
-                              <div style="margin: 24px 0;">
-                                <a href="#" class="aModal"><i class="fa fa-dribbble"></i></a> 
-                                <a href="#" class="aModal"><i class="fa fa-twitter"></i></a>  
-                                <a href="#" class="aModal"><i class="fa fa-linkedin"></i></a>  
-                                <a href="#" class="aModal"><i class="fa fa-facebook"></i></a> 
-                            </div>
-                            <p><button class="buttonModal">Contact</button></p>
-                </div>
-
-            <!--POP UP CLASS ENDS-->
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Modal Ends-->
-
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-   
+     </div>
+  </div>
+</div>
+<!--Expansion Ends-->
