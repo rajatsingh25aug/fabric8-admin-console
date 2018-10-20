@@ -56,7 +56,9 @@
               </div>
            </ng-template>
            <ng-template #expandTemplate let-item="item" let-index="index">
-              <span>{{item.attributes.company}}</span>
+             <li> <span><strong>Company:</strong> {{item.attributes.company}}</span></li>
+              <li><strong>Bio:</strong><span *ngIf="item.attributes.bio;else noBio "> {{item.attributes.bio}}</span></li>
+              <li><span><strong>Email:</strong> {{item.attributes.email}}</span></li>
            </ng-template>
            </pfng-list>
         </div>
@@ -64,3 +66,7 @@
   </div>
 </div>
 <!--Expansion Ends-->
+
+<ng-template #noBio>
+  No Bio found.
+</ng-template>

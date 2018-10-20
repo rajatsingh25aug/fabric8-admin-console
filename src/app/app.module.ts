@@ -13,11 +13,9 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { SearchUserComponent } from './components/search-user/search-user.component';
 import { ShowUserComponent } from './components/show-user/show-user.component';
 import { DataStoreService } from './services/data-store.service';
-import { ToastNotificationModule } from 'patternfly-ng/notification';
+// import { ToastNotificationModule } from 'patternfly-ng/notification';
 import { ListModule } from 'patternfly-ng';
-// NGX Bootstrap
-import { BsDropdownConfig, BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TooltipConfig, TooltipModule } from 'ngx-bootstrap/tooltip';
+
 
 @NgModule({
   declarations: [
@@ -33,10 +31,7 @@ import { TooltipConfig, TooltipModule } from 'ngx-bootstrap/tooltip';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ToastNotificationModule,
     ListModule,
-    BsDropdownModule.forRoot(),
-    TooltipModule.forRoot()
   ],
   providers: [
     AuthenticationService,
@@ -47,8 +42,6 @@ import { TooltipConfig, TooltipModule } from 'ngx-bootstrap/tooltip';
     { provide: WIT_API_PROXY, useValue: 'https://prod-preview.openshift.io/api/' },
     { provide: REALM, useValue: 'realm' },
     DataStoreService,
-    BsDropdownConfig,
-    TooltipConfig
   ],
   bootstrap: [AppComponent],
   schemas: [

@@ -16,13 +16,10 @@ export class SearchUserComponent implements OnInit {
   onSearch(username: string = null) {
     if (username != null) {
 
-      console.log('(in search Component) SUCCESS: recieved user ' + username);
-      console.log('(in search Component) calling search-user service with username ' + username);
-
       this.searchuserService.getusers(username);
 
     } else {
-      console.log('(in app Component) ERROR: username not recieved from search component ' + username);
+      
     }
   }
 
