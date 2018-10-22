@@ -18,8 +18,6 @@ export class SearchUserComponent implements OnInit {
 
       this.searchuserService.getusers(username);
 
-    } else {
-      
     }
   }
 

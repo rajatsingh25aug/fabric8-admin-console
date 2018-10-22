@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStoreService } from '../../services/data-store.service';
 import { SearchUserService } from '../../services/search-user.service';
-import { ListConfig } from '/home/rsinghmn/angular/expanding profile/Dummy repo/fabric8-admin-console/node_modules/patternfly-ng';
+import { ListConfig } from '/home/rsinghmn/angular/fabric8-admin-console/node_modules/patternfly-ng';
 
 @Component({
   selector: 'app-show-user',
