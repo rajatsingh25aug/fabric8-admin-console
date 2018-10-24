@@ -1,6 +1,19 @@
+<!-- <div *ngIf = "users">
+  <div *ngIf = "users.length; else noUser">
+  <div *ngFor="let user of users">
+    <h3>{{ user.attributes.fullName }}</h3>
+    <h4>{{ user.attributes.email }}</h4>
+  </div>
+</div>
+</div>
+
+<ng-template #noUser>
+  <h3>User not found !</h3>
+</ng-template> -->
+
 <br>
 <br>
-<!--navbar starts-->
+<!--toolbar starts-->
 <div class="container-fluid" *ngIf="items;">
   <div class="row toolbar-pf">
      <div class="col-sm-12">
@@ -31,7 +44,8 @@
      </div>
   </div>
 </div>
-<!--navbar ends-->
+<!--toolbar ends-->
+
 <!-- Expansion starts-->
 <div class="padding-15" *ngIf="items">
   <div class="row">
@@ -60,7 +74,6 @@
            <ng-template #expandTemplate let-item="item" let-index="index">
              <li style="font-size:30px;"><span><strong>Company:</strong> {{item.attributes.company}}</span></li>
               <li  style="font-size:30px;"><strong>Bio:</strong><span *ngIf="item.attributes.bio;else noBio "> {{item.attributes.bio}}</span></li>
-              <!-- <li style="font-size:30px;"> <span ><strong>Email:</strong> {{item.attributes.email}}</span></li> -->
               <li  style="font-size:30px;"><span><strong>UserID:</strong> {{item.attributes.UserID}}</span></li>
               <li  style="font-size:30px;"><strong>Url:</strong><span *ngIf="item.attributes.url;else noUrl ">{{item.attributes.url}}</span></li>
            </ng-template>

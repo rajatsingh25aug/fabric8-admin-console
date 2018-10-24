@@ -1,24 +1,19 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { User } from 'ngx-login-client';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataStoreService {
+export class UsersDataStore {
 
-  private _users = new BehaviorSubject(undefined);
+  private _users: BehaviorSubject<User[]> = new BehaviorSubject([]);
 
   get users() {
     return this._users.asObservable();
   }
 
-  constructor() { }
-
-  /**
-   * store_user
-   * stores the username received in user_list
-   */
-  public store_user(users) {
+  addUsers(users: User[]) {
     this._users.next(users);
   }
 }
