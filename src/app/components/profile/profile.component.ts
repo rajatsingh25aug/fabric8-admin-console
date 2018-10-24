@@ -4,7 +4,7 @@ import { FilterConfig } from '/home/rsinghmn/angular/fabric8-admin-console/node_
 import { FilterField } from '/home/rsinghmn/angular/fabric8-admin-console/node_modules/patternfly-ng';
 import { FilterEvent } from '/home/rsinghmn/angular/fabric8-admin-console/node_modules/patternfly-ng';
 import { FilterType } from '/home/rsinghmn/angular/fabric8-admin-console/node_modules/patternfly-ng';
-import { DataStoreService } from '../../services/data-store.service';
+import { UsersDataStore } from '../../store/users-data.store';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +12,7 @@ import { DataStoreService } from '../../services/data-store.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  constructor(private store: DataStoreService) {
+  constructor(private store: UsersDataStore) {
   }
   allItems: any[];
   items: any[];

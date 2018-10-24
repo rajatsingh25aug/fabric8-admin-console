@@ -11,12 +11,9 @@ export class UsersListComponent implements OnInit {
 
   @Input() users: User[];
 
-  items: User[];
   listConfig: ListConfig;
 
   ngOnInit() {
-    this.items = this.users;
-
     this.listConfig = {
       useExpandItems: true
     } as ListConfig;
@@ -24,11 +21,11 @@ export class UsersListComponent implements OnInit {
 
   sort(sortBy: string, order: string) {
     if (order === 'desc') {
-      this.items.sort(function(a, b) {
+      this.users.sort(function(a, b) {
         return b.attributes[sortBy].localeCompare(a.attributes[sortBy], 'en', {sensitivity: 'base'}); // descending
       });
     } else if (order === 'asc') {
-      this.items.sort(function(a, b) {
+      this.users.sort(function(a, b) {
         return a.attributes[sortBy].localeCompare(b.attributes[sortBy], 'en', {sensitivity: 'base'}); // descending
       });
     }

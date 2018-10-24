@@ -27,12 +27,14 @@ export class UsersContainerComponent implements OnInit, OnDestroy {
       this.userService
         .getUsersBySearchString(searchTerm)
         .subscribe((users: User[]) => {
-          this.isSubscriptionError = false;
           this.users = users;
           this.userStore.addUsers(users);
+          this.isSubscriptionError = false;
+          console.log(users, 'in usercontainer subscription error status =', this.isSubscriptionError);
         },
          err => {
           this.isSubscriptionError = true;
+          console.log('subscription error status', this.isSubscriptionError);
         }
       )
     );
