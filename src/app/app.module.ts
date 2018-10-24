@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { AUTH_API_URL, AuthenticationService, SSO_API_URL, REALM, WIT_API_PROXY, AuthInterceptor } from 'ngx-login-client';
 
 import { AppComponent } from './app.component';
@@ -13,14 +13,12 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { SearchUserComponent } from './components/search-user/search-user.component';
 import { ShowUserComponent } from './components/show-user/show-user.component';
 import { DataStoreService } from './services/data-store.service';
-import { ToastNotificationModule } from 'patternfly-ng/notification';
-
+// import { ToastNotificationModule } from 'patternfly-ng/notification';
 import { ListModule } from 'patternfly-ng';
-// NGX Bootstrap
-import { BsDropdownConfig, BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TooltipConfig, TooltipModule } from 'ngx-bootstrap/tooltip';
-
-
+import { ProfileComponent } from './components/profile/profile.component';
+// filter Module
+import { FilterModule } from 'patternfly-ng';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,13 +28,16 @@ import { TooltipConfig, TooltipModule } from 'ngx-bootstrap/tooltip';
     PageNotFoundComponent,
     HeaderComponent,
     SearchUserComponent,
-    ShowUserComponent
+    ShowUserComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ToastNotificationModule
+    ListModule,
+    FilterModule,
+    FormsModule
   ],
   providers: [
     AuthenticationService,
@@ -46,9 +47,12 @@ import { TooltipConfig, TooltipModule } from 'ngx-bootstrap/tooltip';
     { provide: SSO_API_URL, useValue: 'https://sso.prod-preview.openshift.io/api/' },
     { provide: WIT_API_PROXY, useValue: 'https://prod-preview.openshift.io/api/' },
     { provide: REALM, useValue: 'realm' },
-    DataStoreService, BsDropdownConfig, TooltipConfig
-
+    DataStoreService,
+    ProfileComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+],
 })
 export class AppModule { }

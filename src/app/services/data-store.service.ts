@@ -20,6 +20,5 @@ export class DataStoreService {
    */
   public store_user(users) {
     this._users.next(users);
-    console.log('(in data-store) users saved');
   }
 }
