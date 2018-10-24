@@ -15,7 +15,7 @@ import { ShowUserComponent } from './components/show-user/show-user.component';
 import { DataStoreService } from './services/data-store.service';
 // import { ToastNotificationModule } from 'patternfly-ng/notification';
 import { ListModule } from 'patternfly-ng';
-import { ProfileComponent } from './components/profile/profile.component';
+
 // filter Module
 import { FilterModule } from 'patternfly-ng';
 import { FormsModule } from '@angular/forms';
@@ -29,7 +29,6 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     SearchUserComponent,
     ShowUserComponent,
-    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +47,6 @@ import { FormsModule } from '@angular/forms';
     { provide: WIT_API_PROXY, useValue: 'https://prod-preview.openshift.io/api/' },
     { provide: REALM, useValue: 'realm' },
     DataStoreService,
-    ProfileComponent
   ],
   bootstrap: [AppComponent],
   schemas: [
