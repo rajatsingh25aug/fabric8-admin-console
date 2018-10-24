@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataStoreService } from '../../services/data-store.service';
 import { SearchUserService } from '../../services/search-user.service';
 import { ListConfig } from '/home/rsinghmn/angular/fabric8-admin-console/node_modules/patternfly-ng';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-show-user',
   templateUrl: './show-user.component.html',
@@ -15,6 +15,7 @@ export class ShowUserComponent implements OnInit {
   constructor(
     private store: DataStoreService,
     private searchuserservices: SearchUserService,
+    private router: Router
   ) { }
   sortedArray: any;
   sort(sortBy: string, order: string) {
@@ -28,9 +29,10 @@ export class ShowUserComponent implements OnInit {
       });
     }
   }
-  profile1(username) {
-    this.users = username;
-    return this.users;
+  profile() {
+    // this.users = username;
+    // return this.users;
+    this.router.navigate(['profile']);
   }
   ngOnInit() {
     this.store.users.subscribe(users => this.items = users);
@@ -38,5 +40,4 @@ export class ShowUserComponent implements OnInit {
       useExpandItems: true
     } as ListConfig;
   }
-
 }

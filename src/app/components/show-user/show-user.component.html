@@ -1,8 +1,11 @@
+<br>
+<br>
 <!--navbar starts-->
-<div class="container-fluid" *ngIf="items;else noUser">
+<div class="container-fluid" *ngIf="items;">
   <div class="row toolbar-pf">
      <div class="col-sm-12">
         <form class="toolbar-pf-actions" data-dpmaxz-eid="1">
+         
            <div class="form-group">
               <button class="btn btn-link" type="button" (click)="sort('fullName','desc')">
               <span class="fa fa-sort-alpha-desc"></span>
@@ -28,11 +31,6 @@
      </div>
   </div>
 </div>
-<!--no user found-->
-<ng-template #noUser>
-  <h4>No User Found</h4>
-</ng-template>
-<!--no user found end-->
 <!--navbar ends-->
 <!-- Expansion starts-->
 <div class="padding-15" *ngIf="items">
@@ -50,15 +48,21 @@
               </div>
               <div class="list-pf-content-wrapper">
                  <div class="list-pf-main-content">
-                    <div class="list-pf-title">{{item.attributes.fullName}}</div>
+                   <a routerLink = "/profile">
+                    <div class="list-pf-title">{{item.attributes.fullName}}</div> 
                     <div class="list-pf-description text-overflow-pf">{{item.attributes.username}}</div>
+                    <div class="list-pf-description text-overflow-pf">{{item.attributes.email}}</div>
+                    </a>
+
                  </div>
               </div>
            </ng-template>
            <ng-template #expandTemplate let-item="item" let-index="index">
-             <li> <span><strong>Company:</strong> {{item.attributes.company}}</span></li>
-              <li><strong>Bio:</strong><span *ngIf="item.attributes.bio;else noBio "> {{item.attributes.bio}}</span></li>
-              <li><span><strong>Email:</strong> {{item.attributes.email}}</span></li>
+             <li style="font-size:30px;"><span><strong>Company:</strong> {{item.attributes.company}}</span></li>
+              <li  style="font-size:30px;"><strong>Bio:</strong><span *ngIf="item.attributes.bio;else noBio "> {{item.attributes.bio}}</span></li>
+              <!-- <li style="font-size:30px;"> <span ><strong>Email:</strong> {{item.attributes.email}}</span></li> -->
+              <li  style="font-size:30px;"><span><strong>UserID:</strong> {{item.attributes.UserID}}</span></li>
+              <li  style="font-size:30px;"><strong>Url:</strong><span *ngIf="item.attributes.url;else noUrl ">{{item.attributes.url}}</span></li>
            </ng-template>
            </pfng-list>
         </div>
@@ -70,3 +74,29 @@
 <ng-template #noBio>
   No Bio found.
 </ng-template>
+
+<ng-template #noUrl>
+  No Url Found
+</ng-template>
+
+<div class="blank-slate-pf " id="">
+    <div class="blank-slate-pf-icon">
+      <span class="pficon pficon pficon-add-circle-o"></span>
+    </div>
+    <h1>
+      Empty State Title
+    </h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+    <p>
+      Learn more about this <a href="#">in the documentation</a>.
+    </p>
+    <div class="blank-slate-pf-main-action">
+      <button class="btn btn-primary btn-lg"> Main Action </button>
+    </div>
+    <div class="blank-slate-pf-secondary-action">
+      <button class="btn btn-default">Secondary Action</button>
+      <button class="btn btn-default">Secondary Action</button>
+    </div>
+  </div>

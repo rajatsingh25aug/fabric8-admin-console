@@ -15,10 +15,7 @@ export class SearchUserComponent implements OnInit {
 
   onSearch(username: string = null) {
     if (username != null) {
-
       this.searchuserService.getusers(username);
-
     }
   }
-
 }
