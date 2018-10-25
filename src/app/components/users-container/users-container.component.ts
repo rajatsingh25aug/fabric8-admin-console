@@ -30,11 +30,9 @@ export class UsersContainerComponent implements OnInit, OnDestroy {
           this.users = users;
           this.userStore.addUsers(users);
           this.isSubscriptionError = false;
-          console.log(users, 'in usercontainer subscription error status =', this.isSubscriptionError);
         },
          err => {
           this.isSubscriptionError = true;
-          console.log('subscription error status', this.isSubscriptionError);
         }
       )
     );
