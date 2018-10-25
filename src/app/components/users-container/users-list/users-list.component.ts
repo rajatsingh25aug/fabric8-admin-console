@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'ngx-login-client';
-import { ListConfig } from '/home/rsinghmn/angular/fabric8-admin-console/node_modules/patternfly-ng';
+import { ListConfig } from 'patternfly-ng';
 
 @Component({
   selector: 'app-users-list',

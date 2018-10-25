@@ -10,7 +10,6 @@ export class SearchBarComponent {
   @Output() search = new EventEmitter();
 
   handleSearch(searchTerm): void {
-    console.log(searchTerm);
     this.search.emit(searchTerm);
   }
 

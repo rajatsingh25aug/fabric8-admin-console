@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Filter } from '/home/rsinghmn/angular/fabric8-admin-console/node_modules/patternfly-ng';
-import { FilterConfig } from '/home/rsinghmn/angular/fabric8-admin-console/node_modules/patternfly-ng';
-import { FilterField } from '/home/rsinghmn/angular/fabric8-admin-console/node_modules/patternfly-ng';
-import { FilterEvent } from '/home/rsinghmn/angular/fabric8-admin-console/node_modules/patternfly-ng';
-import { FilterType } from '/home/rsinghmn/angular/fabric8-admin-console/node_modules/patternfly-ng';
+import { Filter } from 'patternfly-ng';
+import { FilterConfig } from 'patternfly-ng';
+import { FilterField } from 'patternfly-ng';
+import { FilterEvent } from 'patternfly-ng';
+import { FilterType } from 'patternfly-ng';
 import { UsersDataStore } from '../../store/users-data.store';
 
 @Component({
