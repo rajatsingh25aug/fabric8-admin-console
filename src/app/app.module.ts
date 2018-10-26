@@ -17,6 +17,9 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { ListModule } from 'patternfly-ng';
 import { FilterModule } from 'patternfly-ng';
 import { FormsModule } from '@angular/forms';
+import { ToolbarModule } from 'patternfly-ng';
+// NGX Bootstrap
+import { BsDropdownConfig, BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,9 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     ListModule,
     FilterModule,
-    FormsModule
+    FormsModule,
+    ToolbarModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [
     AuthenticationService,
@@ -47,7 +52,8 @@ import { FormsModule } from '@angular/forms';
     { provide: SSO_API_URL, useValue: 'https://sso.prod-preview.openshift.io/api/' },
     { provide: WIT_API_PROXY, useValue: 'https://prod-preview.openshift.io/api/' },
     { provide: REALM, useValue: 'realm' },
-    UsersDataStore
+    UsersDataStore,
+    BsDropdownConfig
   ],
   bootstrap: [AppComponent],
   schemas: [

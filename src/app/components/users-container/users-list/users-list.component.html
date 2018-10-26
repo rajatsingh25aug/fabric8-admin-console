@@ -59,7 +59,7 @@
               </div>
            </ng-template>
            <ng-template #expandTemplate let-item="item" let-index="index">
-             <li style="font-size:30px;"><span><strong>Company:</strong> {{item.attributes.company}}</span></li>
+             <li style="font-size:30px;"><span><strong>Company:</strong> {{item.attributes.created-at}}</span></li>
               <li  style="font-size:30px;"><strong>Bio:</strong><span *ngIf="item.attributes.bio;else noBio "> {{item.attributes.bio}}</span></li>
               <li  style="font-size:30px;"><span><strong>UserID:</strong> {{item.attributes.UserID}}</span></li>
               <li  style="font-size:30px;"><strong>Url:</strong><span *ngIf="item.attributes.url;else noUrl ">{{item.attributes.url}}</span></li>
@@ -78,3 +78,53 @@
 <ng-template #noUrl>
   No Url Found
 </ng-template>
+
+<!--Tool Bar Starts-->
+<div class="padding-15">
+  <div class="row">
+    <div class="col-sm-12">
+      <h4>Toolbar Component Example</h4>
+      <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <pfng-toolbar [config]="toolbarConfig"
+                      (onFilterChange)="filterChanged($event)"
+                      (onFilterTypeAhead)="filterQueries($event)"
+                      (onSortChange)="sortChanged($event)"
+                      >
+        </pfng-toolbar>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top-10">
+    <div class="col-sm-12">
+      <h4 class="actions-label">Items</h4>
+      <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-sm-12" *ngFor="let item of items">
+        <div class="row">
+          <div class="col-sm-3">
+            <span>{{item.name}}</span>
+          </div>
+          <div class="col-sm-5">
+            <span>{{item.address}}</span>
+          </div>
+          <div class="col-sm-2">
+            <span>{{item.birthMonth}}</span>
+          </div>
+          <div class="col-sm-2">
+            <span>{{item.weekDay}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--tool Bar Ends-->
