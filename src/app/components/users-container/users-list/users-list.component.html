@@ -107,20 +107,20 @@
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <div class="col-sm-12" *ngFor="let item of items">
+      <div class="col-sm-12" *ngFor="let item of users">
         <div class="row">
           <div class="col-sm-3">
-            <span>{{item.name}}</span>
+            <span>{{item.attributes.username}}</span>
           </div>
           <div class="col-sm-5">
-            <span>{{item.address}}</span>
+            <span>{{item.attributes.fullName}}</span>
           </div>
-          <div class="col-sm-2">
+          <!-- <div class="col-sm-2">
             <span>{{item.birthMonth}}</span>
           </div>
           <div class="col-sm-2">
             <span>{{item.weekDay}}</span>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
