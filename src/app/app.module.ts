@@ -18,8 +18,6 @@ import { ListModule } from 'patternfly-ng';
 import { FilterModule } from 'patternfly-ng';
 import { FormsModule } from '@angular/forms';
 import { ToolbarModule } from 'patternfly-ng';
-// NGX Bootstrap
-import { BsDropdownConfig, BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -39,8 +37,7 @@ import { BsDropdownConfig, BsDropdownModule } from 'ngx-bootstrap/dropdown';
     ListModule,
     FilterModule,
     FormsModule,
-    ToolbarModule,
-    BsDropdownModule.forRoot()
+    ToolbarModule
   ],
   providers: [
     AuthenticationService,
@@ -52,8 +49,7 @@ import { BsDropdownConfig, BsDropdownModule } from 'ngx-bootstrap/dropdown';
     { provide: SSO_API_URL, useValue: 'https://sso.prod-preview.openshift.io/api/' },
     { provide: WIT_API_PROXY, useValue: 'https://prod-preview.openshift.io/api/' },
     { provide: REALM, useValue: 'realm' },
-    UsersDataStore,
-    BsDropdownConfig
+    UsersDataStore
   ],
   bootstrap: [AppComponent],
 })
