@@ -107,13 +107,13 @@
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <div class="col-sm-12" *ngFor="let item of users">
+      <div class="col-sm-12" *ngFor="let item of items">
         <div class="row">
           <div class="col-sm-3">
-            <span>{{item.attributes.username}}</span>
+            <span>{{item.attributes.fullName}}</span>
           </div>
           <div class="col-sm-5">
-            <span>{{item.attributes.fullName}}</span>
+            <span>{{item.attributes.email}}</span>
           </div>
           <!-- <div class="col-sm-2">
             <span>{{item.birthMonth}}</span>
