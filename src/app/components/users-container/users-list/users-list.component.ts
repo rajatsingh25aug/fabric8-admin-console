@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { User } from 'ngx-login-client';
 import { ListConfig } from 'patternfly-ng';
 /*ToolBAR*/
@@ -24,7 +24,7 @@ import { ToolbarView } from 'patternfly-ng';
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.css']
 })
-export class UsersListComponent implements OnInit {
+export class UsersListComponent implements OnInit, OnChanges {
 
   @Input() users: User[];
 
@@ -32,7 +32,6 @@ export class UsersListComponent implements OnInit {
   /* Config Files starts */
   actionConfig: ActionConfig;
   actionsText: String = '';
-  allItems: any[];
   filterConfig: FilterConfig;
   filtersText: String = '';
   items: any[];
@@ -44,19 +43,6 @@ export class UsersListComponent implements OnInit {
   /*Config Files Ends */
 
   ngOnInit(): void {
-    this.allItems = [{
-      name: 'Fred Flintstone',
-      address: '20 Dinosaur Way, Bedrock, Washingstone',
-      birthMonth: 'February',
-      weekDay: 'Sunday',
-    }, {
-      name: 'John Smith',
-      address: '415 East Main Street, Norfolk, Virginia',
-      birthMonth: 'October',
-      weekDay: 'Monday',
-    }];
-    this.items = this.allItems;
-    this.items = Object.assign({}, this.users);
     this.filterConfig = {
       fields: [{
         id: 'name',
@@ -77,6 +63,10 @@ export class UsersListComponent implements OnInit {
     } as ToolbarConfig;
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.items = changes.users.currentValue;
+  }
+
   sort(sortBy: string, order: string) {
     if (order === 'desc') {
       this.users.sort(function(a, b) {
@@ -94,13 +84,13 @@ export class UsersListComponent implements OnInit {
    applyFilters(filters: Filter[]): void {
     this.items = [];
     if (filters && filters.length > 0) {
-      this.allItems.forEach((item) => {
+      this.users.forEach((item) => {
         if (this.matchesFilters(item, filters)) {
           this.items.push(item);
         }
       });
     } else {
-      this.items = this.allItems;
+      this.items = this.users;
     }
     this.toolbarConfig.filterConfig.resultsCount = this.items.length;
   }
@@ -119,9 +109,9 @@ export class UsersListComponent implements OnInit {
     let match = true;
     const re = new RegExp(filter.value, 'i');
     if (filter.field.id === 'name') {
-      match = item.name.match(re) !== null;
+      match = item.attributes.fullName.match(re) !== null;
     } else if (filter.field.id === 'address') {
-      match = item.address.match(re) !== null;
+      match = item.attributes.email.match(re) !== null;
     }
     return match;
   }
@@ -136,6 +126,4 @@ export class UsersListComponent implements OnInit {
     });
     return matches;
   }
-
-
 }
