@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { AUTH_API_URL, AuthenticationService, SSO_API_URL, REALM, WIT_API_PROXY, AuthInterceptor, UserService } from 'ngx-login-client';
 
 import { AppComponent } from './app.component';
@@ -56,8 +56,5 @@ import { BsDropdownConfig, BsDropdownModule } from 'ngx-bootstrap/dropdown';
     BsDropdownConfig
   ],
   bootstrap: [AppComponent],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-],
 })
 export class AppModule { }
