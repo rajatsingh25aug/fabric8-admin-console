@@ -43,11 +43,11 @@ export class UsersListComponent implements OnInit, OnChanges {
       fields: [{
         id: 'name',
         title: 'Name',
-        sortType: 'alpha'
+          sortType: 'alpha'
       }, {
         id: 'email',
         title: 'Email',
-        sortType: 'alpha'
+         sortType: 'alpha'
       }],
       isAscending: this.isAscendingSort
     } as SortConfig;
@@ -106,7 +106,7 @@ export class UsersListComponent implements OnInit, OnChanges {
   compare(item1: any, item2: any): number {
     let compValue = 0;
     if (this.currentSortField.id === 'name') {
-      compValue = item1.attributes.fullName.localeCompare(item2.attributes.fulName);
+      compValue = item1.attributes.fullName.localeCompare(item2.attributes.fullName, 'en' , {sensitivity: 'base'});
     } else if (this.currentSortField.id === 'email') {
       compValue = item1.attributes.email.localeCompare(item2.attributes.email);
     }
