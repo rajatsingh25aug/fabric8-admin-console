@@ -22,13 +22,15 @@ export class UsersListComponent implements OnInit, OnChanges {
   toolbarConfig: ToolbarConfig;
   header: String = 'No User Found';
   message: String = 'Please Try Again';
-  showClose: false;
+  showClose: true;
   type: string;
   types: string[];
   ngOnInit(): void {
     this.types = [
       NotificationType.DANGER,
+      NotificationType.SUCCESS
     ];
+
     this.type = this.types[0];
 
     this.filterConfig = {
@@ -68,6 +70,9 @@ export class UsersListComponent implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges) {
     this.items = changes.users.currentValue;
+  }
+  handleType(item: string): void {
+    this.type = item;
   }
    // Filter
    applyFilters(filters: Filter[]): void {
