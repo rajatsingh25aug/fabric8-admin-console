@@ -14,7 +14,7 @@ import { UsersContainerComponent } from './components/users-container/users-cont
 import { UsersListComponent } from './components/users-container/users-list/users-list.component';
 import { UserStore } from './store/user.store';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { ListModule, ToolbarModule, FilterModule } from 'patternfly-ng';
+import { ListModule, ToolbarModule, FilterModule, ToastNotificationModule } from 'patternfly-ng';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -35,7 +35,8 @@ import { FormsModule } from '@angular/forms';
     ListModule,
     FilterModule,
     FormsModule,
-    ToolbarModule
+    ToolbarModule,
+    ToastNotificationModule
   ],
   providers: [
     AuthenticationService,

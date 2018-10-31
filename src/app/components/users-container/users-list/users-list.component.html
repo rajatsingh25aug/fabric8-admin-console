@@ -1,4 +1,4 @@
-<div class="user-list" *ngIf="users?.length > 0">
+<div class="user-list" *ngIf="users?.length > 0 ; else noUser">
   <!--toolbar starts -->
   <div class="container-fluid">
     <div class="row toolbar-pf">
@@ -69,3 +69,9 @@
   </div>
   <!--Expandion Ends-->
 </div>
+<ng-template #noUser><div *ngIf="users"><pfng-toast-notification
+  [header]="header"
+  [message]="message"
+  [showClose]="showClose"
+  [type]="type">
+</pfng-toast-notification></div></ng-template>

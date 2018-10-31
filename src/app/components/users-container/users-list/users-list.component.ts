@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { User } from 'ngx-login-client';
 import { ListConfig, Filter, FilterConfig, FilterField, FilterEvent, FilterType, SortConfig, SortEvent,
-   ToolbarConfig, SortField} from 'patternfly-ng';
+   ToolbarConfig, SortField, NotificationType} from 'patternfly-ng';
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
@@ -20,8 +20,17 @@ export class UsersListComponent implements OnInit, OnChanges {
   sortConfig: SortConfig;
   currentSortField: SortField;
   toolbarConfig: ToolbarConfig;
-
+  header: String = 'No User Found';
+  message: String = 'Please Try Again';
+  showClose: false;
+  type: string;
+  types: string[];
   ngOnInit(): void {
+    this.types = [
+      NotificationType.DANGER,
+    ];
+    this.type = this.types[0];
+
     this.filterConfig = {
       fields: [{
         id: 'name',
