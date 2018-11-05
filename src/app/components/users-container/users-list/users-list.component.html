@@ -69,9 +69,8 @@
   </div>
   <!--Expandion Ends-->
 </div>
-<ng-template #noUser><div *ngIf="users"><pfng-toast-notification
-  [header]="header"
-  [message]="message"
-  [showClose]="showClose"
-  [type]="type">
-</pfng-toast-notification></div></ng-template>
+<ng-template #noUser>
+  <div *ngIf="users">
+    <pfng-toast-notification [header]="header" [message]="message" [type]="type"></pfng-toast-notification>
+  </div>
+</ng-template>
