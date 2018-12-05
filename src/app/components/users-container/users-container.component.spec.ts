@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UsersContainerComponent } from './users-container.component';
+import { UserService } from 'ngx-login-client';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { Logger, Broadcaster } from 'ngx-base';
+import { AUTH_API_URL } from 'ngx-login-client';
 
 describe('UsersContainerComponent', () => {
   let component: UsersContainerComponent;
@@ -8,7 +12,18 @@ describe('UsersContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsersContainerComponent ]
+      declarations: [ UsersContainerComponent ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ],
+      providers: [
+        UserService,
+        HttpClient,
+        HttpHandler,
+        Logger,
+        Broadcaster,
+        { provide: AUTH_API_URL, useValue: 'https://auth.prod-preview.openshift.io/api/' },
+      ]
     })
     .compileComponents();
   }));
