@@ -12,18 +12,7 @@ describe('UsersContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsersContainerComponent ],
-      schemas: [
-        CUSTOM_ELEMENTS_SCHEMA
-      ],
-      providers: [
-        UserService,
-        HttpClient,
-        HttpHandler,
-        Logger,
-        Broadcaster,
-        { provide: AUTH_API_URL, useValue: 'https://auth.prod-preview.openshift.io/api/' },
-      ]
+      declarations: [ UsersContainerComponent ]
     })
     .compileComponents();
   }));

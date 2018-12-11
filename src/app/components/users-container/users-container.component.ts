@@ -14,7 +14,7 @@ import {
 } from '../../store/user.store';
 import {
   UserService
-} from 'src/app/services/users.service';
+} from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-users-container',
@@ -29,14 +29,14 @@ export class UsersContainerComponent implements OnInit, OnDestroy {
 
   constructor(
     private userStore: UserStore,
-    private usersservice: UserService
+    private userService: UserService
   ) {}
 
   ngOnInit() {}
 
   searchUsers(searchTerm: string): void {
     this.subscriptions.add(
-      this.usersservice.getUsersByName(searchTerm)
+      this.userService.getUsersByName(searchTerm)
       .subscribe((users: User[]) => {
           this.users = users;
           this.userStore.addUsers(users);

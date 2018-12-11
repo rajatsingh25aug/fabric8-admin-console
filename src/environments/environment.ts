@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
-  adminUrl : 'https://admin-console.api.prod-preview.openshift.io/api/',
-  authUrl: 'https://auth.prod-preview.openshift.io/api/',
-  ssoUrl: 'https://sso.prod-preview.openshift.io/api/',
-  witUrl: 'https://prod-preview.openshift.io/api/'
+  adminApiUrl : 'https://admin-console.api.prod-preview.openshift.io/api/',
+  authApiUrl: 'https://auth.prod-preview.openshift.io/api/',
+  ssoApiUrl: 'https://sso.prod-preview.openshift.io/api/',
+  witApiUrl: 'https://prod-preview.openshift.io/api/'
 };

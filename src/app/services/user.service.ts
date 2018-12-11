@@ -8,7 +8,8 @@ import {
 } from 'ngx-login-client';
 import {
   HttpClient,
-  HttpHeaders
+  HttpHeaders,
+  HttpParams
 } from '@angular/common/http';
 import { of ,
   Observable
@@ -33,20 +34,16 @@ export class UserService {
     private authService: AuthenticationService,
     @Inject(ADMIN_API_URL) adminUrl: string
   ) {
-    this.searchUrl = adminUrl + 'search/users?q=';
+    this.searchUrl = adminUrl + 'search/users?';
   }
 
   getUsersByName(searchTerm: string): Observable < User[] > {
+    const params = new HttpParams().set('q', searchTerm);
     if (searchTerm && searchTerm !== '') {
       return this.http
-        .get(this.searchUrl +
-          encodeURIComponent(searchTerm), {
-            headers: this.headers
-          })
+        .get<{data: User[]}>(this.searchUrl, {params, headers: this.headers})
         .pipe(
-          map((response: {
-            data: User[]
-          }) => response.data)
+          map((res => res.data))
         );
     }
     return of([]);

@@ -22,7 +22,6 @@ import {
   NotificationType
 } from 'patternfly-ng';
 
-import { environment } from '../../../../environments/environment.prod';
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
@@ -77,7 +76,7 @@ export class UsersListComponent implements OnInit, OnChanges {
       }, {
         id: 'email',
         title: 'Email',
-         sortType: 'alpha'
+        sortType: 'alpha'
       }],
       isAscending: this.isAscendingSort
     } as SortConfig;
