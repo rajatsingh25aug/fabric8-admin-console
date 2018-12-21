@@ -22,10 +22,14 @@ export class AuthGuard implements CanActivate {
   }
 
   checkLogin(url: string): boolean {
+<<<<<<< HEAD
     if (this.authService.isLoggedIn()) {
       console.log('Auth guard true');
       return true;
     }
+=======
+    if (this.authService.isLoggedIn()) {  return true; }
+>>>>>>> writing unit tests
 
     // Store the attempted URL for redirecting
     this.loginService.redirectUrl = url;

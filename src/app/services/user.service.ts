@@ -22,11 +22,19 @@ export class UserService {
     this.searchUrl = adminUrl + 'search/users?';
   }
 
+<<<<<<< HEAD
   getUsersByName(searchTerm: string): Observable<User[]> {
     const params = new HttpParams().set('q', searchTerm);
     if (searchTerm && searchTerm !== '') {
       return this.http
         .get<{ data: User[] }>(this.searchUrl, { params, headers: this.headers })
+=======
+  getUsersByName(searchTerm: string): Observable < User[] > {
+    const params = this.searchUrl + `q=${searchTerm}`;
+    if (searchTerm && searchTerm !== '') {
+      return this.http
+        .get<{data: User[]}>(params, {headers: this.headers})
+>>>>>>> writing unit tests
         .pipe(
           tap((res) => console.log(res)),
           map((res) => res.data)
