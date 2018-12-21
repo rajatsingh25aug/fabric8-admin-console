@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from '../login/login.component';
 import { LoginService } from 'src/app/services/login.service';
@@ -46,3 +47,5 @@ describe('loginComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+=======
+>>>>>>> writing unit tests
