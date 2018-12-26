@@ -21,6 +21,7 @@ describe('UsersListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+<<<<<<< HEAD
   // tests for rendering profile images
   it('should render profile images: userImages', async(() => {
     const tag = fixture.debugElement.nativeElement;
@@ -31,4 +32,6 @@ describe('UsersListComponent', () => {
     const tag = fixture.debugElement.nativeElement;
     expect(tag.querySelector('#expandTemplate'));
   });
+=======
+>>>>>>> userStore test
 });
