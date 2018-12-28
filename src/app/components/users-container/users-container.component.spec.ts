@@ -16,10 +16,6 @@ describe('UsersContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-<<<<<<< HEAD
-      declarations: [UsersContainerComponent]
-    }).compileComponents();
-=======
       declarations: [ UsersContainerComponent ],
       providers: [
         AuthenticationService,
@@ -44,7 +40,6 @@ describe('UsersContainerComponent', () => {
       ]
     })
     .compileComponents();
->>>>>>> writing unit tests
   }));
 
   beforeEach(() => {
