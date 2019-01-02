@@ -12,7 +12,7 @@ describe('UsersStore', () => {
     const store: UserStore = TestBed.get(UserStore);
     expect(store).toBeTruthy();
   });
-  it('should add and then get the latest User', async(() => {
+  it('should add and then get the latest User upon expecting', async(() => {
     let store: UserStore;
     store = TestBed.get(UserStore);
     const testUser = [{
