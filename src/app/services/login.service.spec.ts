@@ -10,32 +10,26 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('LoginService', () => {
-  beforeEach(() => {
-     TestBed.configureTestingModule({
-    imports: [
-      HttpClientTestingModule
-    ],
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [HttpClientTestingModule],
     providers: [
-      AuthenticationService,
-      Broadcaster,
-      { provide: AUTH_API_URL, useValue: 'https://auth.example.com' },
-      { provide: SSO_API_URL, useValue: 'https://sso.example.com' },
-      { provide: WIT_API_PROXY, useValue: 'https://wit.example.com' },
+      { provide: AUTH_API_URL, useValue: 'https://auth.example.com/api/' },
+      { provide: SSO_API_URL, useValue: 'https://sso.example.com/auth/api/' },
+      { provide: WIT_API_PROXY, useValue: 'https://wit.example.com/api/'},
+      { provide: ADMIN_API_URL, useValue: 'https://admin.example.com/api/'},
       { provide: REALM, useValue: 'realm' },
-    HttpClient,
-    HttpHandler,
-    {provide: Router}
+      Broadcaster,
+      Logger,
+      UserService,
+      AuthenticationService,
+      {
+        provide: Router
+      }
     ]
-  });
-
-});
+  }));
 
   it('should be created', () => {
     const service: LoginService = TestBed.get(LoginService);
     expect(service).toBeTruthy();
-  });
-  it('should redirect to Auth', () => {
-    const service: LoginService = TestBed.get(LoginService);
-    expect(service.redirectToAuth).toBe('test');
   });
 });
