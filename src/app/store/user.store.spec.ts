@@ -1,9 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 
 import { UserStore } from './user.store';
-import { BehaviorSubject } from 'rxjs';
-import { User } from 'ngx-login-client';
-import { error } from '@angular/compiler/src/util';
 
 describe('UsersStore', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

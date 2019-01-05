@@ -31,6 +31,7 @@ import { RequestCache } from './services/request-cache.service';
 
 import { ADMIN_API_URL } from './shared/admin-api';
 import { environment } from '../../src/environments/environment';
+import { WindowService } from './services/window.service';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { environment } from '../../src/environments/environment';
     RequestCache,
     UserService,
     UserStore,
-    userService
+    userService,
+    WindowService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
