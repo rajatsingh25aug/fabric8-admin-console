@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { AUTH_API_URL, AuthenticationService } from 'ngx-login-client';
 import { Router } from '@angular/router';
 import { Broadcaster } from 'ngx-base';
+import { WindowService } from './window.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,16 @@ export class LoginService {
   static readonly REDIRECT_URL_KEY = 'redirectUrl';
   static readonly DEFAULT_URL = '/_home';
   static readonly LOGIN_URL = '/login';
+  private window: Window;
 
   constructor(
+    windowService: WindowService,
     private authService: AuthenticationService,
     private broadcaster: Broadcaster,
     private router: Router,
     @Inject(AUTH_API_URL) private authApiUrl: string
   ) {
+    this.window = windowService.getNativeWindow();
     this.broadcaster.on('authenticationError').subscribe(() => {
       this.logout();
     });
@@ -24,11 +28,11 @@ export class LoginService {
 
   redirectToAuth(): void {
     console.log('redirect to auth now');
-    const redirectUrl = encodeURIComponent(window.location.href);
+    const redirectUrl = encodeURIComponent(location.href);
     console.log(redirectUrl);
     const loginUrl = `${this.authApiUrl}login?redirect=${redirectUrl}`;
     console.log('lognUrl' + loginUrl);
-    window.location.href = loginUrl;
+    this.window.location.href = loginUrl;
   }
 
   redirectAfterLogin(): void {
@@ -40,16 +44,16 @@ export class LoginService {
   redirectToLogin(currentUrl: string): void {
     console.log('redirect to redirectToLogin');
     this.redirectUrl = currentUrl;
-    window.location.href = LoginService.LOGIN_URL;
+    this.window.location.href = LoginService.LOGIN_URL;
   }
   _search() { // added this function to allow testing
-    console.log('_search is:>>>>' + window.location.search.substr(1));
-    return window.location.search.substr(1);
+    console.log('_search is:>>>>' + this.window.location.search.substr(1));
+    return this.window.location.search.substr(1);
   }
 
   login(): void {
     console.log('Login');
-    const query = window.location.search.substr(1);
+    const query = this.window.location.search.substr(1);
     console.log('query is":', query);
     const result: any = {};
     console.log('result is this...' + result);
@@ -78,7 +82,7 @@ export class LoginService {
   logout(): void {
     console.log('logging out');
     this.authService.logout();
-    window.location.href = '/';
+    this.window.location.href = '/';
   }
 
   set redirectUrl(value: string) {
