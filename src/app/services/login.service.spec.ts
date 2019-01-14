@@ -48,6 +48,7 @@ describe('LoginService', () => {
             search: '?token_json=some_token'
         }
       });
+      console.log('getNative', windowService.getNativeWindow());
       const originalUrl: string = routerSpy.url;
       service.login();
       expect(authServiceSpy.logIn).toHaveBeenCalled();
@@ -57,7 +58,7 @@ describe('LoginService', () => {
     const windowService: jasmine.SpyObj<WindowService> = TestBed.get(WindowService);
     windowService.getNativeWindow.and.returnValue({
       location: {
-        search: '?token_json=some_token'
+        search: '?token_json=error'
       }
     });
         authServiceSpy.isLoggedIn.and.returnValue(true);

@@ -14,13 +14,13 @@ export class LoginService {
   private window: Window;
 
   constructor(
-    windowService: WindowService,
+    private windowService: WindowService,
     private authService: AuthenticationService,
     private broadcaster: Broadcaster,
     private router: Router,
     @Inject(AUTH_API_URL) private authApiUrl: string
   ) {
-    this.window = windowService.getNativeWindow();
+    this.window = this.windowService.getNativeWindow();
     this.broadcaster.on('authenticationError').subscribe(() => {
       this.logout();
     });
@@ -53,6 +53,7 @@ export class LoginService {
 
   login(): void {
     console.log('Login');
+    console.log('window', this.window);
     const query = this.window.location.search.substr(1);
     console.log('query is":', query);
     const result: any = {};

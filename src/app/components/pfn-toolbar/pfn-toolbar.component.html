@@ -1,0 +1,50 @@
+  <!--PFNEXT-->
+  <table class="pf-c-table pf-m-grid-lg" role="grid">
+    <thead>
+      <tr>
+        <th class="pf-c-table__sort pf-m-ascending pf-m-width-30"  >
+          <button (click)="sortChanged()">
+            Name
+            <span class="pf-c-table__sort-indicator">
+                  <i class="fas fa-angle-up"></i>
+              </span>
+          </button>
+        </th>
+        <th class="pf-c-table__sort pf-m-ascending pf-m-width-30">
+          Email
+        </th>
+        <th class="pf-c-table__sort pf-m-ascending pf-m-width-30" >
+          Username
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of items">
+      <tr>
+        <td class="pf-c-table__toggle">
+          <button class="pf-c-button pf-m-plain" (click)="toggleView()">
+            <i class="fas fa-angle-down"></i>
+          </button>
+        </td>
+        <th data-label="fullName">
+          <div id="expandable-node1">{{item.attributes.fullName}}</div>
+        </th>
+        <td data-label="email">
+          {{item.attributes.email}}
+        </td>
+        <td data-label="username">
+          {{item.attributes.username}}
+        </td>
+      </tr>
+      <tr class="pf-c-table__expandable-row pf-m-expanded">
+          <div class="pf-c-table__expandable-row-content" id="expandTemplate">
+           <li><strong>Bio:</strong>{{item.attributes.bio}}</li>
+           <li>
+            <span>
+              <strong>User ID: </strong> {{item.attributes.userID}}
+            </span>
+          </li>
+          </div>
+      </tr>
+    </tbody>
+  </table>
+  <!--Ended-->

@@ -32,7 +32,9 @@ import { RequestCache } from './services/request-cache.service';
 import { ADMIN_API_URL } from './shared/admin-api';
 import { environment } from '../../src/environments/environment';
 import { WindowService } from './services/window.service';
-
+import { PfnToolbarComponent } from './components/pfn-toolbar/pfn-toolbar.component';
+import { DemoComponent } from './components/demo/demo.component';
+import { AuditLogComponent } from './components/audit-log/audit-log.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,10 @@ import { WindowService } from './services/window.service';
     HeaderComponent,
     UsersContainerComponent,
     UsersListComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    PfnToolbarComponent,
+    DemoComponent,
+    AuditLogComponent
   ],
   imports: [
     BrowserModule,

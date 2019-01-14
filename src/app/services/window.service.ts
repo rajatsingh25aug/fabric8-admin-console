@@ -13,6 +13,7 @@ export class WindowService {
    * @returns {Window}
    */
   getNativeWindow(): Window {
+    console.log('native Window', this.getNativeWindow);
     return this.nativeWindow;
   }
 

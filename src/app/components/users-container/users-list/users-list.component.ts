@@ -143,7 +143,9 @@ export class UsersListComponent implements OnInit, OnChanges {
   // Handle sort changes
   sortChanged($event: SortEvent): void {
     this.currentSortField = $event.field;
+    console.log('currentSort Field', this.currentSortField);
     this.isAscendingSort = $event.isAscending;
+    console.log('isAscebdong Field', this.isAscendingSort);
     this.items.sort((item1: any, item2: any) => this.compare(item1, item2));
   }
 }

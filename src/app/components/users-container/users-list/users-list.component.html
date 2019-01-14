@@ -5,13 +5,14 @@
     <div class="row toolbar-pf">
       <div class="col-sm-12 toolbar">
         <pfng-toolbar [config]="toolbarConfig" (onFilterChange)="filterChanged($event)" (onSortChange)="sortChanged($event)"></pfng-toolbar>
+        <app-pfng-toolbar [] ()></app-pfng-toolbar>
       </div>
     </div>
   </div>
 </div>
 <!--toolbar ends-->
 <!-- User List starts -->
-<div class="padding-15" *ngIf="users?.length > 0" appInfiniteScroll>
+<div class="padding-15" *ngIf="users?.length > 0">
   <div class="row">
     <div class="col-sm-12">
       <div class="form-group">

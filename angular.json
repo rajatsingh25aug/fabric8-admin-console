@@ -26,7 +26,8 @@
               "./node_modules/patternfly/dist/css/patternfly.min.css",
               "./node_modules/patternfly/dist/css/patternfly-additions.min.css",
               "./node_modules/patternfly-ng/dist/css/patternfly-ng.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/@patternfly/patternfly-next/patternfly.css"
             ],
             "scripts": []
           },
