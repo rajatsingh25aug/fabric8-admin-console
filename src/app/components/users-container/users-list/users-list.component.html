@@ -5,14 +5,13 @@
     <div class="row toolbar-pf">
       <div class="col-sm-12 toolbar">
         <pfng-toolbar [config]="toolbarConfig" (onFilterChange)="filterChanged($event)" (onSortChange)="sortChanged($event)"></pfng-toolbar>
-        <app-pfng-toolbar [] ()></app-pfng-toolbar>
       </div>
     </div>
   </div>
 </div>
 <!--toolbar ends-->
 <!-- User List starts -->
-<div class="padding-15" *ngIf="users?.length > 0">
+<!-- <div class="padding-15" *ngIf="users?.length > 0">
   <div class="row">
     <div class="col-sm-12">
       <div class="form-group">
@@ -65,7 +64,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!--Expandion Ends-->
 </div>
 <ng-template #noUser>
@@ -73,3 +72,81 @@
     <pfng-toast-notification [header]="header" [message]="message" [type]="type"></pfng-toast-notification>
   </div>
 </ng-template>
+<!-- <app-pfn-toolbar (SortChange)="sortChanged($event)"></app-pfn-toolbar> -->
+<!--Table Starts-->
+<table class="pf-c-table pf-m-grid-lg" role="grid" *ngIf="users?.length > 0 ; else noUser">
+  <thead>
+    <tr>
+      <th class="pf-c-table__sort pf-m-ascending " scope="col">
+        <button>
+          Avatar
+          <span class="pf-c-table__sort-indicator">
+                <i class="fas fa-angle-up"></i>
+            </span>
+        </button>
+      </th>
+      <th class="pf-c-table__sort " scope="col">
+        <button>
+          Name
+          <span class="pf-c-table__sort-indicator">
+                <i class="fas fa-sort"></i>
+                    </span>
+        </button>
+      </th>
+      <th class="pf-c-table__sort " scope="col">
+        <button>
+          Email
+          <span class="pf-c-table__sort-indicator">
+                <i class="fas fa-sort"></i>
+                    </span>
+        </button>
+      </th>
+      <th scope="col">
+        UserName
+      </th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of users">
+    <tr>
+      <span>
+          <button class="pf-c-button pf-m-plain pf-m-expanded" id="expandable-toggle1">
+              <i class="fas fa-angle-down"></i>
+            </button>        
+      <td data-label="Avatar">
+        <img src="{{item.attributes.imageURL}}" class="img-responsive icon-user">
+      </td>
+            </span>
+      <td data-label="FullName">
+        {{item.attributes.fullName}}
+      </td>
+      <td data-label="Email">
+        {{item.attributes.email}}
+      </td>
+      <td data-label="UserName">
+        {{item.attributes.username}}
+      </td>
+    </tr>
+      <tr class="pf-c-table__expandable-row pf-m-expanded">
+          <td colspan="4">
+            <div class="pf-c-table__expandable-row-content">
+              <span>
+              <strong>Bio: </strong>
+                <span *ngIf="item.attributes.bio; else noBio"> {{item.attributes.bio}}</span>
+                <ng-template #noBio>No Bio found.</ng-template>
+                </span>
+                <span *ngIf="item.attributes.company; else noCompany">
+                    <strong>Company: </strong>
+                      <span> {{item.attributes.company}}</span>
+                      <ng-template #noCompany>No Company found.</ng-template>
+                      </span>
+                      <span *ngIf="item.attributes.userID; else noID">
+                          <strong>Company: </strong>
+                            <span> {{item.attributes.userID}}</span>
+                            <ng-template #noID>No ID found.</ng-template>
+                            </span>
+            </div>
+          </td>
+        </tr>
+  </tbody>
+</table>
+<!--Table ENds-->

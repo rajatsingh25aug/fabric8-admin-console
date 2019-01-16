@@ -11,18 +11,4 @@ export declare class SortEvent {
      * True if sort is ascending
      */
     isAscending: boolean;
-      /**
-     * A flag indicating the component is disabled
-     */
-    /**
-     * A list of sortable fields
-     */
-    fields: SortField[];
-    /**
-     * True if sort is ascending
-     */
-    /**
-     * True if sort should be shown
-     */
-    visible?: boolean;
 }

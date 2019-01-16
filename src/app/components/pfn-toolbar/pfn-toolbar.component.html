@@ -1,50 +1,41 @@
-  <!--PFNEXT-->
-  <table class="pf-c-table pf-m-grid-lg" role="grid">
-    <thead>
-      <tr>
-        <th class="pf-c-table__sort pf-m-ascending pf-m-width-30"  >
-          <button (click)="sortChanged()">
-            Name
-            <span class="pf-c-table__sort-indicator">
-                  <i class="fas fa-angle-up"></i>
+<div class="pf-l-toolbar pf-u-justify-content-space-between pf-u-mx-xl pf-u-my-md">
+    <div class="pf-l-toolbar__group">
+      <div class="pf-l-toolbar__item pf-u-mr-2xl">
+        <div class="pf-c-input-group">
+          <div class="pf-c-dropdown">
+            <button id="dropdown-simple-example-collapsed-button" class="pf-c-dropdown__toggle">
+              <span class="pf-c-dropdown__toggle-text">
+                          All
               </span>
-          </button>
-        </th>
-        <th class="pf-c-table__sort pf-m-ascending pf-m-width-30">
-          Email
-        </th>
-        <th class="pf-c-table__sort pf-m-ascending pf-m-width-30" >
-          Username
-        </th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let item of items">
-      <tr>
-        <td class="pf-c-table__toggle">
-          <button class="pf-c-button pf-m-plain" (click)="toggleView()">
-            <i class="fas fa-angle-down"></i>
-          </button>
-        </td>
-        <th data-label="fullName">
-          <div id="expandable-node1">{{item.attributes.fullName}}</div>
-        </th>
-        <td data-label="email">
-          {{item.attributes.email}}
-        </td>
-        <td data-label="username">
-          {{item.attributes.username}}
-        </td>
-      </tr>
-      <tr class="pf-c-table__expandable-row pf-m-expanded">
-          <div class="pf-c-table__expandable-row-content" id="expandTemplate">
-           <li><strong>Bio:</strong>{{item.attributes.bio}}</li>
-           <li>
-            <span>
-              <strong>User ID: </strong> {{item.attributes.userID}}
-            </span>
-          </li>
+              <div class="fas fa-caret-down pf-c-dropdown__toggle-icon"></div>
+            </button>
+            <div class="pf-c-dropdown__menu" >
+              All
+            </div>
           </div>
-      </tr>
-    </tbody>
-  </table>
-  <!--Ended-->
+          <input class="pf-c-form-control" type="text" id="dropdown-simple-textInput10" name="textInput10" placeholder="Filter..." aria-label="filter input with popup button">
+          <button class="pf-c-button pf-m-tertiary" id="dropdown-simple-textAreaButton2">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+      <div class="pf-l-toolbar__item pf-u-mr-lg">
+        <div class="pf-c-dropdown">
+          <button id="dropdown-simple-example-collapsed2-button" class="pf-c-dropdown__toggle">
+            <span class="pf-c-dropdown__toggle-text">
+                      All
+            </span>
+            <i class="fas fa-caret-down pf-c-dropdown__toggle-icon"></i>
+          </button>
+          <div class="pf-c-dropdown__menu" hidden>
+            All
+          </div>
+        </div>
+      </div>
+      <div class="pf-l-toolbar__item">
+        <button class="pf-c-button pf-m-plain">
+          <div class="fas fa-sort-alpha-down"></div>
+        </button>
+      </div>
+    </div>
+  </div>
