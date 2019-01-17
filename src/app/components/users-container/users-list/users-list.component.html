@@ -77,7 +77,7 @@
 <table class="pf-c-table pf-m-grid-lg" role="grid" *ngIf="users?.length > 0 ; else noUser">
   <thead>
     <tr>
-      <th class="pf-c-table__sort pf-m-ascending " scope="col">
+      <th class="pf-c-table__sort pf-m-ascending ">
         <button>
           Avatar
           <span class="pf-c-table__sort-indicator">
@@ -85,7 +85,7 @@
             </span>
         </button>
       </th>
-      <th class="pf-c-table__sort " scope="col">
+      <th class="pf-c-table__sort ">
         <button>
           Name
           <span class="pf-c-table__sort-indicator">
@@ -93,7 +93,7 @@
                     </span>
         </button>
       </th>
-      <th class="pf-c-table__sort " scope="col">
+      <th class="pf-c-table__sort " >
         <button>
           Email
           <span class="pf-c-table__sort-indicator">
@@ -106,14 +106,20 @@
       </th>
     </tr>
   </thead>
-  <tbody *ngFor="let item of users">
+  <tbody *ngFor="let item of users; let toggle = true;">
     <tr>
       <span>
-          <button class="pf-c-button pf-m-plain pf-m-expanded" id="expandable-toggle1">
-              <i class="fas fa-angle-down"></i>
+          <button class="pf-c-button pf-m-plain" id="expandable-toggle1" (click)="toggle = !toggle" >
+              <i class="fas" [ngClass]="{ 'fa-angle-up': toggle, 'fa-angle-down': !toggle }"></i>
             </button>        
       <td data-label="Avatar">
-        <img src="{{item.attributes.imageURL}}" class="img-responsive icon-user">
+          <div *ngIf="(item.attributes.imageURL !== undefined && item.attributes.imageURL.length !== 0); then userImage else defaultImage"></div>
+          <ng-template #userImage>
+            <img src="{{item.attributes.imageURL}}" class="img-responsive icon-user">
+          </ng-template>
+          <ng-template #defaultImage>
+            <img src="../../../../assets/img/profile-user.png" class="img-responsive icon-user">
+          </ng-template>
       </td>
             </span>
       <td data-label="FullName">
@@ -126,7 +132,7 @@
         {{item.attributes.username}}
       </td>
     </tr>
-      <tr class="pf-c-table__expandable-row pf-m-expanded">
+      <tr class="pf-c-table__expandable-row"  [ngClass]="{ 'pf-m-expanded': toggle }">
           <td colspan="4">
             <div class="pf-c-table__expandable-row-content">
               <span>
