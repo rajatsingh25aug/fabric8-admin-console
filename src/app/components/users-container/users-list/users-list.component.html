@@ -67,14 +67,10 @@
 </div> -->
 <!--Expandion Ends-->
 </div>
-<ng-template #noUser>
-  <div *ngIf="users">
-    <pfng-toast-notification [header]="header" [message]="message" [type]="type"></pfng-toast-notification>
-  </div>
-</ng-template>
-<!-- <app-pfn-toolbar (SortChange)="sortChanged($event)"></app-pfn-toolbar> -->
+<app-pfn-toolbar  *ngIf="users?.length > 0" (filterData)="filterUser($event)"></app-pfn-toolbar>
+<div *ngIf="filterCount > 0">{{filterCount}} Results Found<a href="#">Clear All</a></div>
 <!--Table Starts-->
-<table class="pf-c-table pf-m-grid-lg" role="grid" *ngIf="users?.length > 0 ; else noUser">
+<table class="pf-c-table pf-m-grid-lg" role="grid" *ngIf="users?.length > 0">
   <thead>
     <tr>
       <th class="pf-c-table__sort pf-m-ascending ">

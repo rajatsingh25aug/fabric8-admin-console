@@ -13,6 +13,7 @@ import {
   SortField,
   NotificationType
 } from 'patternfly-ng';
+import { count } from 'rxjs/operators';
 
 @Component({
   selector: 'app-users-list',
@@ -26,6 +27,7 @@ export class UsersListComponent implements OnInit, OnChanges {
   filterConfig: FilterConfig;
   filtersText: String = '';
   items: User[];
+  filterData: User[];
   isAscendingSort: Boolean = true;
   separator: Object;
   sortConfig: SortConfig;
@@ -35,8 +37,11 @@ export class UsersListComponent implements OnInit, OnChanges {
   message: String = 'Please Try Again';
   type: string;
   types: string[];
+  filterCount = 0;
+
 
   ngOnInit(): void {
+    console.log('users after searching', this.users);
     this.types = [NotificationType.DANGER];
     this.type = this.types[0];
 
@@ -82,6 +87,24 @@ export class UsersListComponent implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges) {
     this.items = changes.users.currentValue;
+   // this.count = changes.count.currentValue;
+  }
+  filterUser( searchTerm: string) {
+    this.filterCount = 0;
+    console.log('searchTerm', searchTerm);
+    if (!this.items || !searchTerm) {
+      return this.items;
+    }
+    for (let i = 0; i < this.items.length; i++) {
+      if (this.items[i].attributes.fullName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
+        console.log('data transfer');
+          // this.filterData[i] = { ...this.items[i] };  Copy full object using spread operator
+          console.log('filterData', this.filterData);
+          this.filterCount++;
+      }
+  }
+   // this.items = {...this.filterData};
+    console.log(this.items, 'results found');
   }
   // Filter
   applyFilters(filters: Filter[]): void {

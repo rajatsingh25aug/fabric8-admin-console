@@ -1,4 +1,5 @@
-<div class="col-md-6 col-md-offset-3 search-pf has-button search-bar">
+<!-- <div class="pf-c-background-image"> -->
+<!-- <div class="col-md-6 col-md-offset-3 search-pf has-button search-bar">
   <div class="form-group">
     <input #searchBar type="text" (keyup.enter)="handleSearch(searchBar.value)" class="form-control search-input"
       placeholder="Search" />
@@ -8,9 +9,18 @@
       <span class="fa fa-search fa-2x"></span>
     </button>
   </div>
-</div>
+</div> -->
+<!-- <div class="pf-c-page__main"> -->
+  <!-- <section class="pf-c-page__main-section pf-m-light"> -->
+        <!-- <div class="pf-c-form__label">
+          Search
+          <span class="pf-c-form__label-required">&#42;</span>
+        </div> -->
+            <input #searchBar type="text" (keyup.enter)="handleSearch(searchBar.value)" class="form-control search-input"
+            placeholder="Search" class="" />
+  <!-- </section> -->
+<!-- </div> -->
 <nav>
-   <a [routerLink]="[ '/demo' ]">Demo!</a>
+  <a [routerLink]="[ '/demo' ]">Demo!</a>
 </nav>
 <router-outlet></router-outlet>
-
