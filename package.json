@@ -26,8 +26,6 @@
     "ngx-base": "^4.0.0",
     "ngx-login-client": "^2.8.0",
     "ngx-widgets": "^3.2.0",
-    "patternfly": "^3.58.0",
-    "patternfly-ng": "^4.5.1",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
