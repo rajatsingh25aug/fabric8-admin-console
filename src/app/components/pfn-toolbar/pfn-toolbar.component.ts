@@ -6,9 +6,14 @@ import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChange
 })
 export class PfnToolbarComponent {
   @Output() filterData = new EventEmitter();
+  @Output() sortData = new EventEmitter();
 
   handleFilter(searchTerm): void {
     this.filterData.emit(searchTerm);
+  }
+
+  handleSort(isAscending): void {
+    this.sortData.emit(isAscending);
   }
 
 }

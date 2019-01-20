@@ -41,134 +41,146 @@ export class UsersListComponent implements OnInit, OnChanges {
 
 
   ngOnInit(): void {
-    console.log('users after searching', this.users);
-    this.types = [NotificationType.DANGER];
-    this.type = this.types[0];
+    // console.log('users after searching', this.users);
 
-    this.filterConfig = {
-      fields: [
-        {
-          id: 'name',
-          title: 'Name',
-          placeholder: 'Filter by Name...',
-          type: FilterType.TEXT
-        },
-        {
-          id: 'email',
-          title: 'Email',
-          placeholder: 'Filter by Email...',
-          type: FilterType.TEXT
-        }
-      ] as FilterField[],
-      appliedFilters: []
-    } as FilterConfig;
-    this.listConfig = {
-      useExpandItems: true
-    } as ListConfig;
-    this.sortConfig = {
-      fields: [
-        {
-          id: 'name',
-          title: 'Name',
-          sortType: 'alpha'
-        },
-        {
-          id: 'email',
-          title: 'Email',
-          sortType: 'alpha'
-        }
-      ],
-      isAscending: this.isAscendingSort
-    } as SortConfig;
-    this.toolbarConfig = {
-      filterConfig: this.filterConfig,
-      sortConfig: this.sortConfig
-    } as ToolbarConfig;
+    // this.filterConfig = {
+    //   fields: [
+    //     {
+    //       id: 'name',
+    //       title: 'Name',
+    //       placeholder: 'Filter by Name...',
+    //       type: FilterType.TEXT
+    //     },
+    //     {
+    //       id: 'email',
+    //       title: 'Email',
+    //       placeholder: 'Filter by Email...',
+    //       type: FilterType.TEXT
+    //     }
+    //   ] as FilterField[],
+    //   appliedFilters: []
+    // } as FilterConfig;
+    // this.listConfig = {
+    //   useExpandItems: true
+    // } as ListConfig;
+    // this.sortConfig = {
+    //   fields: [
+    //     {
+    //       id: 'name',
+    //       title: 'Name',
+    //       sortType: 'alpha'
+    //     },
+    //     {
+    //       id: 'email',
+    //       title: 'Email',
+    //       sortType: 'alpha'
+    //     }
+    //   ],
+    //   isAscending: this.isAscendingSort
+    // } as SortConfig;
+    // this.toolbarConfig = {
+    //   filterConfig: this.filterConfig,
+    //   sortConfig: this.sortConfig
+    // } as ToolbarConfig;
   }
   ngOnChanges(changes: SimpleChanges) {
     this.items = changes.users.currentValue;
    // this.count = changes.count.currentValue;
   }
   filterUser( searchTerm: string) {
-    this.filterCount = 0;
-    console.log('searchTerm', searchTerm);
-    if (!this.items || !searchTerm) {
-      return this.items;
+    console.log('filterUSer');
+    this.items = [];
+    if (!this.users || !searchTerm) {
+      console.log('empty user Dtaa');
+      return this.users;
     }
-    for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].attributes.fullName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
-        console.log('data transfer');
-          // this.filterData[i] = { ...this.items[i] };  Copy full object using spread operator
-          console.log('filterData', this.filterData);
-          this.filterCount++;
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].attributes.fullName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
+        this.items[i] = this.users[i];
       }
   }
-   // this.items = {...this.filterData};
-    console.log(this.items, 'results found');
+  console.log('this.items', this.items);
+      this.users = this.items;
   }
   // Filter
-  applyFilters(filters: Filter[]): void {
-    this.items = [];
-    if (filters && filters.length > 0) {
-      this.users.forEach((item) => {
-        if (this.matchesFilters(item, filters)) {
-          this.items.push(item);
-        }
-      });
-    } else {
-      this.items = this.users;
-    }
-    this.toolbarConfig.filterConfig.resultsCount = this.items.length;
-  }
+  // applyFilters(filters: Filter[]): void {
+  //   this.items = [];
+  //   if (filters && filters.length > 0) {
+  //     this.users.forEach((item) => {
+  //       if (this.matchesFilters(item, filters)) {
+  //         this.items.push(item);
+  //       }
+  //     });
+  //   } else {
+  //     this.items = this.users;
+  //   }
+  //   this.toolbarConfig.filterConfig.resultsCount = this.items.length;
+  // }
   // Handle filter changes
-  filterChanged($event: FilterEvent): void {
-    this.filtersText = '';
-    $event.appliedFilters.forEach((filter) => {
-      this.filtersText += filter.field.title + ' : ' + filter.value + '\n';
-    });
-    this.applyFilters($event.appliedFilters);
-  }
-  matchesFilter(item: any, filter: Filter): boolean {
-    let match = true;
-    const re = new RegExp(filter.value, 'i');
-    if (filter.field.id === 'name') {
-      match = item.attributes.fullName.match(re) !== null;
-    } else if (filter.field.id === 'email') {
-      match = item.attributes.email.match(re) !== null;
-    }
-    return match;
-  }
-  matchesFilters(item: any, filters: Filter[]): boolean {
-    let matches = true;
-    filters.forEach((filter) => {
-      if (!this.matchesFilter(item, filter)) {
-        matches = false;
-        return matches;
-      }
-    });
-    return matches;
+  // filterChanged($event: FilterEvent): void {
+  //   this.filtersText = '';
+  //   $event.appliedFilters.forEach((filter) => {
+  //     this.filtersText += filter.field.title + ' : ' + filter.value + '\n';
+  //   });
+  //   this.applyFilters($event.appliedFilters);
+  // }
+  // matchesFilter(item: any, filter: Filter): boolean {
+  //   let match = true;
+  //   const re = new RegExp(filter.value, 'i');
+  //   if (filter.field.id === 'name') {
+  //     match = item.attributes.fullName.match(re) !== null;
+  //   } else if (filter.field.id === 'email') {
+  //     match = item.attributes.email.match(re) !== null;
+  //   }
+  //   return match;
+  // }
+  // matchesFilters(item: any, filters: Filter[]): boolean {
+  //   let matches = true;
+  //   filters.forEach((filter) => {
+  //     if (!this.matchesFilter(item, filter)) {
+  //       matches = false;
+  //       return matches;
+  //     }
+  //   });
+  //   return matches;
+  // }
+  sortUser() {
+    console.log('sorting!');
+    this.items.sort((item1: any, item2: any) => this.compare(item1, item2));
   }
   // Sort
   compare(item1: any, item2: any): number {
     let compValue = 0;
-    if (this.currentSortField.id === 'name') {
-      compValue = item1.attributes.fullName.localeCompare(item2.attributes.fullName, 'en', {
-        sensitivity: 'base'
-      });
-    } else if (this.currentSortField.id === 'email') {
-      compValue = item1.attributes.email.localeCompare(item2.attributes.email);
-    }
+  //  if (this.currentSortField.id === 'name') {
+      // compValue = item1.attributes.fullName.localeCompare(item2.attributes.fullName, 'en', {
+      //   sensitivity: 'base'
+      // });
+      if (this.isAscendingSort) {
+        console.log('ascending order');
+        this.isAscendingSort = false;
+        item1.attributes.fullName.localeCompare(item2.attributes.fullName, 'en', {
+          sensitivity: 'base'
+        });
+      } else {
+          this.isAscendingSort = true;
+        console.log('Descending  order');
+          item2.attributes.fullName.localeCompare(item1.attributes.fullName, 'en', {
+            sensitivity: 'base'
+          });
+       }
+    // }  else if (this.currentSortField.id === 'email') {
+    //   compValue = item1.attributes.email.localeCompare(item2.attributes.email);
+    // }
     if (!this.isAscendingSort) {
       compValue = compValue * -1;
     }
     return compValue;
   }
   // Handle sort changes
-  sortChanged($event: SortEvent): void {
-    this.currentSortField = $event.field;
-    console.log('currentSort Field', this.currentSortField);
-    this.isAscendingSort = $event.isAscending;
-    console.log('isAscebdong Field', this.isAscendingSort);
-    this.items.sort((item1: any, item2: any) => this.compare(item1, item2));
-  }
+  // sortChanged(isAscending: boolean): void {
+    // this.currentSortField = $event.field;
+    // console.log('currentSort Field', this.currentSortField);
+    // this.isAscendingSort = $event.isAscending;
+    // console.log('isAscebdong Field', this.isAscendingSort);
+  // }
 }
