@@ -23,20 +23,20 @@ import { count } from 'rxjs/operators';
 export class UsersListComponent implements OnInit, OnChanges {
   @Input() users: User[];
 
-  listConfig: ListConfig;
-  filterConfig: FilterConfig;
-  filtersText: String = '';
+  // listConfig: ListConfig;
+  // filterConfig: FilterConfig;
+  // filtersText: String = '';
   items: User[];
-  filterData: User[];
-  isAscendingSort: Boolean = true;
-  separator: Object;
-  sortConfig: SortConfig;
-  currentSortField: SortField;
-  toolbarConfig: ToolbarConfig;
-  header: String = 'No User Found';
-  message: String = 'Please Try Again';
-  type: string;
-  types: string[];
+  // filterData: User[];
+  isAscendingSort: Boolean = false;
+  // separator: Object;
+  // sortConfig: SortConfig;
+  // currentSortField: SortField;
+  // toolbarConfig: ToolbarConfig;
+  // header: String = 'No User Found';
+  // message: String = 'Please Try Again';
+  // type: string;
+  // types: string[];
   filterCount = 0;
 
 
@@ -82,25 +82,30 @@ export class UsersListComponent implements OnInit, OnChanges {
     //   filterConfig: this.filterConfig,
     //   sortConfig: this.sortConfig
     // } as ToolbarConfig;
+    console.log('users-list.ts');
   }
   ngOnChanges(changes: SimpleChanges) {
     this.items = changes.users.currentValue;
    // this.count = changes.count.currentValue;
   }
-  filterUser( searchTerm: string) {
-    console.log('filterUSer');
+  filterUser( filterTerm: string) {
+    // console.log('filterUser');
     this.items = [];
-    if (!this.users || !searchTerm) {
-      console.log('empty user Dtaa');
-      return this.users;
-    }
     for (let i = 0; i < this.users.length; i++) {
-      if (this.users[i].attributes.fullName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
-        this.items[i] = this.users[i];
+      if (this.users[i].attributes.fullName.toLowerCase().indexOf(filterTerm.toLowerCase()) !== -1) {
+        this.items.push(this.users[i]);
+        // console.log('items', [i], this.items);
+        this.filterCount++;
+      //  console.log(this.filterCount);
       }
   }
-  console.log('this.items', this.items);
-      this.users = this.items;
+  // console.log('this.items', this.items);
+  }
+  clearFilter() {
+    this.items = [];
+    this.filterCount = 0;
+    this.items = this.users;
+   // console.log('from clear Filter', this.items);
   }
   // Filter
   // applyFilters(filters: Filter[]): void {
@@ -145,42 +150,20 @@ export class UsersListComponent implements OnInit, OnChanges {
   //   return matches;
   // }
   sortUser() {
-    console.log('sorting!');
+    // console.log('sorting!');
+    this.isAscendingSort = !this.isAscendingSort;
     this.items.sort((item1: any, item2: any) => this.compare(item1, item2));
   }
   // Sort
   compare(item1: any, item2: any): number {
     let compValue = 0;
-  //  if (this.currentSortField.id === 'name') {
-      // compValue = item1.attributes.fullName.localeCompare(item2.attributes.fullName, 'en', {
-      //   sensitivity: 'base'
-      // });
-      if (this.isAscendingSort) {
-        console.log('ascending order');
-        this.isAscendingSort = false;
-        item1.attributes.fullName.localeCompare(item2.attributes.fullName, 'en', {
-          sensitivity: 'base'
-        });
-      } else {
-          this.isAscendingSort = true;
-        console.log('Descending  order');
-          item2.attributes.fullName.localeCompare(item1.attributes.fullName, 'en', {
-            sensitivity: 'base'
-          });
-       }
-    // }  else if (this.currentSortField.id === 'email') {
-    //   compValue = item1.attributes.email.localeCompare(item2.attributes.email);
-    // }
+      compValue = item1.attributes.fullName.localeCompare(item2.attributes.fullName, 'en', {
+        sensitivity: 'base'
+      });
+   // console.log(compValue);
     if (!this.isAscendingSort) {
       compValue = compValue * -1;
     }
     return compValue;
   }
-  // Handle sort changes
-  // sortChanged(isAscending: boolean): void {
-    // this.currentSortField = $event.field;
-    // console.log('currentSort Field', this.currentSortField);
-    // this.isAscendingSort = $event.isAscending;
-    // console.log('isAscebdong Field', this.isAscendingSort);
-  // }
 }

@@ -27,50 +27,50 @@ export class LoginService {
   }
 
   redirectToAuth(): void {
-    console.log('redirect to auth now');
+    // console.log('redirect to auth now');
     const redirectUrl = encodeURIComponent(location.href);
-    console.log(redirectUrl);
+    // console.log(redirectUrl);
     const loginUrl = `${this.authApiUrl}login?redirect=${redirectUrl}`;
-    console.log('lognUrl' + loginUrl);
+    // console.log('lognUrl' + loginUrl);
     this.window.location.href = loginUrl;
   }
 
   redirectAfterLogin(): void {
-    console.log('redirect to redirectAfterLogin');
+    // console.log('redirect to redirectAfterLogin');
     const url = this.redirectUrl;
     this.router.navigateByUrl(url);
   }
 
   redirectToLogin(currentUrl: string): void {
-    console.log('redirect to redirectToLogin');
+    // console.log('redirect to redirectToLogin');
     this.redirectUrl = currentUrl;
     this.window.location.href = LoginService.LOGIN_URL;
   }
   _search() { // added this function to allow testing
-    console.log('_search is:>>>>' + this.window.location.search.substr(1));
+    // console.log('_search is:>>>>' + this.window.location.search.substr(1));
     return this.window.location.search.substr(1);
   }
 
   login(): void {
-    console.log('Login');
-    console.log('window', this.window);
+    // console.log('Login');
+    // console.log('window', this.window);
     const query = this.window.location.search.substr(1);
-    console.log('query is":', query);
+    // console.log('query is":', query);
     const result: any = {};
-    console.log('result is this...' + result);
+    // console.log('result is this...' + result);
     query.split('&').forEach(function(part) {
       const item: any = part.split('=');
       result[item[0]] = decodeURIComponent(item[1]);
-      console.log('now result is - ', result, item);
+      // console.log('now result is - ', result, item);
     });
 
     if (result['error']) {
-      console.log('error is ' , result['error']);
+      // console.log('error is ' , result['error']);
     }
 
     if (result['token_json']) {
       // Handle the case that this is a login
-      console.log('result token - ' + result['token_json']);
+      // console.log('result token - ' + result['token_json']);
       this.authService.logIn(result['token_json']);
       // Navigate back to the current URL to clear up the query string
       // this.router.navigateByUrl(this.router.url);

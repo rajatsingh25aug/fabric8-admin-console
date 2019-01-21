@@ -16,11 +16,24 @@
           Search
           <span class="pf-c-form__label-required">&#42;</span>
         </div> -->
-            <input #searchBar type="text" (keyup.enter)="handleSearch(searchBar.value)" class="form-control search-input"
-            placeholder="Search" class="" />
+
+      <main class="pf-c-page__main">
+        <section class="pf-c-page__main-section">
+          Search Bar here
+          <form class="pf-c-form">
+            <div class="pf-c-form__group">
+              <label class="pf-c-form__label">
+                Name
+                <span class="pf-c-form__label-required" aria-hidden="true">&#42;</span>
+              </label>
+              <input #searchBar type="text" (keyup.enter)="handleSearch(searchBar.value)" class="form-control search-input pf-c-form-control"
+              placeholder="Search" class="" />
+            </div>
+          </form>
+        </section>
+      </main>
   <!-- </section> -->
 <!-- </div> -->
 <nav>
   <a [routerLink]="[ '/demo' ]">Demo!</a>
 </nav>
-<router-outlet></router-outlet>

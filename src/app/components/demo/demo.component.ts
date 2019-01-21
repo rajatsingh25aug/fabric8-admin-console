@@ -10,6 +10,7 @@ export class DemoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('demo.compoennt.ts');
   }
 
 }

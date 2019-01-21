@@ -16,7 +16,9 @@ export class UsersContainerComponent implements OnInit, OnDestroy {
 
   constructor(private userStore: UserStore, private userService: UserService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('users-container.component.ts');
+  }
 
   searchUsers(searchTerm: string): void {
     this.subscriptions.add(

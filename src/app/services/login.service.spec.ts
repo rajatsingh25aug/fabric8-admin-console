@@ -48,7 +48,7 @@ describe('LoginService', () => {
             search: '?token_json=some_token'
         }
       });
-      console.log('getNative', windowService.getNativeWindow());
+     // console.log('getNative', windowService.getNativeWindow());
       const originalUrl: string = routerSpy.url;
       service.login();
       expect(authServiceSpy.logIn).toHaveBeenCalled();

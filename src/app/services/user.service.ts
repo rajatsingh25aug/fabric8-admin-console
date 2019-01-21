@@ -28,7 +28,7 @@ export class UserService {
       return this.http
         .get<{data: User[]}>(params, {headers: this.headers})
         .pipe(
-          tap((res) => console.log(res)),
+          // tap((res) => console.log(res)),
           map((res) => res.data)
         );
     }

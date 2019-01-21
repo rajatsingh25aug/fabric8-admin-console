@@ -1,5 +1,5 @@
-<div>
-<div class="toolbar" *ngIf="users?.length > 0 ; else noUser">
+<!-- <div> -->
+<!-- <div class="toolbar" *ngIf="users?.length > 0 ; else noUser"> -->
   <!--toolbar starts -->
   <!-- <div class="container-fluid">
     <div class="row toolbar-pf">
@@ -66,36 +66,21 @@
   </div>
 </div> -->
 <!--Expandion Ends-->
-</div>
-<app-pfn-toolbar  *ngIf="users?.length > 0" (filterData)="filterUser($event)" (sortData)="sortUser()"></app-pfn-toolbar>
-<div *ngIf="filterCount > 0">{{filterCount}} Results Found<a href="#">Clear All</a></div>
+<!-- </div> -->
+<app-pfn-toolbar  *ngIf="users?.length > 0;" (filterData)="filterUser($event)" (sortData)="sortUser()"></app-pfn-toolbar>
+<div class="pf-c-badge pf-m-unread" *ngIf="users?.length > 0;">{{filterCount}} Results Found<span><a href="javascript:void(0)" (click)="clearFilter()">Clear All</a></span></div>
 <!--Table Starts-->
 <table class="pf-c-table pf-m-grid-lg" role="grid" *ngIf="users?.length > 0">
   <thead>
     <tr>
-      <th class="pf-c-table__sort pf-m-ascending ">
-        <button>
+      <th>
           Avatar
-          <span class="pf-c-table__sort-indicator">
-                <i class="fas fa-angle-up"></i>
-            </span>
-        </button>
       </th>
-      <th class="pf-c-table__sort ">
-        <button>
+      <th scope="col">
           Name
-          <span class="pf-c-table__sort-indicator">
-                <i class="fas fa-sort"></i>
-                    </span>
-        </button>
       </th>
-      <th class="pf-c-table__sort " >
-        <button>
+      <th scope="col">
           Email
-          <span class="pf-c-table__sort-indicator">
-                <i class="fas fa-sort"></i>
-                    </span>
-        </button>
       </th>
       <th scope="col">
         UserName

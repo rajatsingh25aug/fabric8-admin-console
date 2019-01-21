@@ -35,6 +35,7 @@ import { WindowService } from './services/window.service';
 import { PfnToolbarComponent } from './components/pfn-toolbar/pfn-toolbar.component';
 import { DemoComponent } from './components/demo/demo.component';
 import { AuditLogComponent } from './components/audit-log/audit-log.component';
+import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { AuditLogComponent } from './components/audit-log/audit-log.component';
     SearchBarComponent,
     PfnToolbarComponent,
     DemoComponent,
-    AuditLogComponent
+    AuditLogComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
