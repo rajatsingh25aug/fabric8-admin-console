@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-inverse navbar-pf header" role="navigation">
+<!-- <nav class="navbar navbar-default navbar-inverse navbar-pf header" role="navigation">
   <div class="collapse navbar-collapse ">
     <ul class="nav navbar-nav navbar-right navbar-primary">
       <li class="divider"></li>
@@ -8,5 +8,78 @@
         </a>
       </li>
     </ul>
-  </div> <!-- .navbar-collapse -->
-</nav>
+  </div>
+</nav> -->
+<div class="pf-c-background-image">
+</div>
+<div class="pf-c-page" id="page-layout-default-nav">
+  <header role="banner" class="pf-c-page__header">
+    <div class="pf-c-page__header-brand">
+      <div class="pf-c-page__header-brand-toggle">
+        <button class="pf-c-button pf-m-plain" id="page-layout-default-nav-nav-toggle" aria-label="Toggle primary navigation" (click)="toggleval()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <a class="pf-c-page__header-brand-link">
+      </a>
+    </div>
+    <div class="pf-c-page__header-tools">
+      <div class="pf-c-page__header-tools-group">
+        <button class="pf-c-button pf-m-plain pf-m-mobile" aria-label="Overflow actions">
+          <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+        </button>
+        <div class="pf-m-user pf-screen-reader">
+          <div class="pf-c-dropdown">
+            <button id="page-layout-default-nav-dropdown-button" class="pf-c-dropdown__toggle pf-m-plain" aria-expanded="false">
+              Kyle Baker
+              <i class="fas fa-caret-down pf-c-dropdown__toggle-icon" aria-hidden="true"></i>
+            </button>
+            <div class="pf-c-dropdown__menu" hidden>
+              Kyle Baker
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="pf-c-page__sidebar pf-c-page__collapsed">
+    <nav class="pf-c-nav" id="page-layout-default-nav-primary-nav" aria-label="Primary Nav Default Example">
+      <ul class="pf-c-nav__list">
+        <li class="pf-c-nav__item">
+          <a href="#" class="pf-c-nav__link pf-m-current" aria-current="page">
+            Search User
+          </a>
+        </li>
+        <li class="pf-c-nav__item">
+          <a href="#" class="pf-c-nav__link">
+            Admin Console
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <main role="main" class="pf-c-page__main">
+    <section class="pf-c-page__main-section pf-m-light">
+      <div class="pf-c-content">
+        <form class="pf-c-form pf-m-horizontal">
+            <div class="pf-c-form__group">
+              <label class="pf-c-form__label" required for="horizontal-align-labels-horizontal-form-name">
+                Search
+                <span class="pf-c-form__label-required" aria-hidden="true">&#42;</span>
+              </label>
+              <div class="pf-c-form__horizontal-group">
+                <input class="pf-c-form-control" type="text" id="horizontal-align-labels-horizontal-form-name" name="horizontal-align-labels-horizontal-form-name" required>
+              </div>
+            </div>
+          </form>
+      </div>
+    </section>
+    <section class="pf-c-page__main-section">
+      <div class="pf-l-gallery pf-m-gutter">
+        <div class="pf-l-gallery__item">
+
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
