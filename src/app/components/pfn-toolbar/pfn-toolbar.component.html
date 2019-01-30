@@ -1,33 +1,17 @@
-<!--PF  ### ToolBar Started-->
-<div class="pf-l-toolbar pf-u-justify-content-space-between pf-u-mx-xl pf-u-my-md">
-    <div class="pf-l-toolbar__group">
-      <div class="pf-l-toolbar__item pf-u-mr-2xl">
+<!--pfToolBar Starts-->
+<div class="pf-l-toolbar">
+      <div class="pf-l-toolbar__item">
         <div class="pf-c-input-group">
-          <div class="pf-c-dropdown">
-            <button id="dropdown-simple-example-collapsed-button" class="pf-c-dropdown__toggle" aria-expanded="false">
-              Name
-              <i class="fas fa-caret-down"></i>
-            </button>
-          </div>
-          <input #filterField class="pf-c-form-control" type="text" (keyup.enter)="handleFilter(filterField.value)" placeholder="Filter..." >
-          <button class="pf-c-button pf-m-tertiary" id="dropdown-simple-textAreaButton2">
+          <input #filterField class="pf-c-form-control" type="text" (keyup.enter)="[handleFilter(filterField.value)]" placeholder="Filter..." >
+          <button class="pf-c-button pf-m-tertiary" (click)="handleFilter(filterField.value)">
             <i class="fas fa-search"></i>
           </button>
         </div>
       </div>
-      <div class="pf-l-toolbar__item pf-u-mr-lg">
-        <div class="pf-c-dropdown">
-          <span class="pf-c-dropdown__toggle">
-            Name
-            <i class="fas fa-caret-down"></i>
-          </span>
-        </div>
-      </div>
       <div class="pf-l-toolbar__item">
         <button class="pf-c-button pf-m-plain" aria-label="Sort A-Z"  (click)="handleSort()">
-          <i class="fas fa-sort-alpha-down"></i>
+          <i class="fas" [ngClass]="{'fa-sort-alpha-down': ascending, 'fa-sort-alpha-up':!ascending}"></i>
         </button>
       </div>
-    </div>
   </div>
-<!--ToolBar Ended PF%%%-->
+<!--pftoolBar Ends-->

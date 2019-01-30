@@ -68,7 +68,17 @@
 <!--Expandion Ends-->
 <!-- </div> -->
 <app-pfn-toolbar  *ngIf="users?.length > 0;" (filterData)="filterUser($event)" (sortData)="sortUser()"></app-pfn-toolbar>
-<div class="pf-c-badge pf-m-unread" *ngIf="users?.length > 0;">{{filterCount}} Results Found<span><a href="javascript:void(0)" (click)="clearFilter()">Clear All</a></span></div>
+<div *ngIf="filterCount > 0; else noResults">
+    <div class="pf-c-badge pf-m-unread">{{filterCount}} Results Found </div>
+    <a href="javascript:void(0)" (click)="clearFilter()" *ngIf="filterCount > 0; else noUserFiltered">Clear All</a>
+</div>
+<ng-template #noResults>
+  <div *ngIf="noUser === 0">
+      <div class="pf-c-badge pf-m-unread">{{filterCount}} Results Found </div>
+      <a href="javascript:void(0)" (click)="clearFilter()">Clear All</a>
+  </div>
+   
+</ng-template>
 <!--Table Starts-->
 <table class="pf-c-table pf-m-grid-lg" role="grid" *ngIf="users?.length > 0">
   <thead>
@@ -114,23 +124,23 @@
       </td>
     </tr>
       <tr class="pf-c-table__expandable-row"  [ngClass]="{ 'pf-m-expanded': toggle }">
-          <td colspan="4">
+          <td colspan="3">
             <div class="pf-c-table__expandable-row-content">
-              <span>
+              <li>
               <strong>Bio: </strong>
-                <span *ngIf="item.attributes.bio; else noBio"> {{item.attributes.bio}}</span>
+              <span *ngIf="item.attributes.bio; else noBio"> {{item.attributes.bio}}</span>
                 <ng-template #noBio>No Bio found.</ng-template>
-                </span>
-                <span *ngIf="item.attributes.company; else noCompany">
+                </li>
+                <li>
                     <strong>Company: </strong>
-                      <span> {{item.attributes.company}}</span>
+                      <span  *ngIf="item.attributes.company; else noCompany" > {{item.attributes.company}}</span>
                       <ng-template #noCompany>No Company found.</ng-template>
-                      </span>
-                      <span *ngIf="item.attributes.userID; else noID">
+                      </li>
+                      <li>
                           <strong>Company: </strong>
-                            <span> {{item.attributes.userID}}</span>
+                            <span *ngIf="item.attributes.userID; else noID"> {{item.attributes.userID}}</span>
                             <ng-template #noID>No ID found.</ng-template>
-                            </span>
+                            </li>
             </div>
           </td>
         </tr>

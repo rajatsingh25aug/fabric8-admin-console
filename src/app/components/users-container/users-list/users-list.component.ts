@@ -38,7 +38,7 @@ export class UsersListComponent implements OnInit, OnChanges {
   // type: string;
   // types: string[];
   filterCount = 0;
-
+  noUser = -1;
 
   ngOnInit(): void {
     // console.log('users after searching', this.users);
@@ -92,19 +92,24 @@ export class UsersListComponent implements OnInit, OnChanges {
     // console.log('filterUser');
     this.items = [];
     for (let i = 0; i < this.users.length; i++) {
-      if (this.users[i].attributes.fullName.toLowerCase().indexOf(filterTerm.toLowerCase()) !== -1) {
+      if (this.users[i].attributes.fullName.toLowerCase().indexOf(filterTerm.toLowerCase()) !== -1 ||
+      this.users[i].attributes.email.toLowerCase().indexOf(filterTerm.toLowerCase()) !== -1 ||
+      this.users[i].attributes.username.toLowerCase().indexOf(filterTerm.toLowerCase()) !== -1) {
         this.items.push(this.users[i]);
         // console.log('items', [i], this.items);
         this.filterCount++;
       //  console.log(this.filterCount);
       }
   }
-  // console.log('this.items', this.items);
+    if (this.filterCount === 0) {
+      this.noUser = 0;
+    }
   }
   clearFilter() {
     this.items = [];
     this.filterCount = 0;
     this.items = this.users;
+    this.noUser = -1;
    // console.log('from clear Filter', this.items);
   }
   // Filter

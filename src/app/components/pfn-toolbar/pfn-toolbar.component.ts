@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, Output, EventEmitter} from '@angular/core';
 @Component({
   selector: 'app-pfn-toolbar',
   templateUrl: './pfn-toolbar.component.html',
@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChange
 export class PfnToolbarComponent {
   @Output() filterData = new EventEmitter();
   @Output() sortData = new EventEmitter();
+  ascending: Boolean;
 
   handleFilter(searchTerm): void {
     this.filterData.emit(searchTerm);
@@ -14,6 +15,7 @@ export class PfnToolbarComponent {
 
   handleSort(isAscending): void {
     this.sortData.emit(isAscending);
+    this.ascending = !this.ascending;
   }
 
 }
