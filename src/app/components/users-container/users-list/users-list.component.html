@@ -67,34 +67,48 @@
 </div> -->
 <!--Expandion Ends-->
 <!-- </div> -->
-<app-pfn-toolbar  *ngIf="users?.length > 0;" (filterData)="filterUser($event)" (sortData)="sortUser()"></app-pfn-toolbar>
+<!-- <app-pfn-toolbar  *ngIf="users?.length > 0;" (filterData)="filterUser($event)" (sortData)="sortUser()"></app-pfn-toolbar>
 <div *ngIf="filterCount > 0; else noResults">
     <div class="pf-c-badge pf-m-unread">{{filterCount}} Results Found </div>
     <a href="javascript:void(0)" (click)="clearFilter()" *ngIf="filterCount > 0; else noUserFiltered">Clear All</a>
-</div>
-<ng-template #noResults>
+</div> -->
+<!-- <ng-template #noResults>
   <div *ngIf="noUser === 0">
       <div class="pf-c-badge pf-m-unread">{{filterCount}} Results Found </div>
       <a href="javascript:void(0)" (click)="clearFilter()">Clear All</a>
   </div>
-   
-</ng-template>
-<!--Table Starts-->
-<table class="pf-c-table pf-m-grid-lg" role="grid" *ngIf="users?.length > 0">
+</ng-template> -->
+<!-- Table Starts -->
+<table class="pf-c-table pf-m-grid-lg" *ngIf="users?.length > 0">
   <thead>
     <tr>
-      <th>
+      <th scope="col">
           Avatar
       </th>
-      <th scope="col">
-          Name
-      </th>
-      <th scope="col">
-          Email
-      </th>
-      <th scope="col">
-        UserName
-      </th>
+      <th class="pf-c-table__sort">
+          <button class="pf-c-button pf-m-plain"  (click)="sortUser('fullName')">
+            Name
+            <span class="pf-c-table__sort-indicator">
+                    <i class="fas fa-arrows-alt-v"></i>
+                </span>
+          </button>
+        </th>
+        <th class="pf-c-table__sort">
+            <button class="pf-c-button pf-m-plain" (click)="sortUser('email')">
+              Email
+              <span class="pf-c-table__sort-indicator">
+                      <i class="fas fa-arrows-alt-v"></i>
+                  </span>
+            </button>
+          </th>
+          <th class="pf-c-table__sort">
+              <button class="pf-c-button pf-m-plain">
+                UserName
+                <span class="pf-c-table__sort-indicator">
+                        <i class="fas fa-arrows-alt-v"></i>
+                    </span>
+              </button>
+            </th>
     </tr>
   </thead>
   <tbody *ngFor="let item of items; let toggle = true;">
@@ -146,4 +160,83 @@
         </tr>
   </tbody>
 </table>
-<!--Table ENds-->
+<!-- Table ENds -->
+<!-- <table class="pf-c-table " role="grid" aria-label="Expandable table example">
+    <thead>
+      <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <th class="pf-c-table__sort">
+          <div class="pf-c-button pf-m-plain">
+            Avatar
+          </div>
+        </th>
+        <th class="pf-c-table__sort">
+          <button class="pf-c-button pf-m-plain">
+            Name
+            <span class="pf-c-table__sort-indicator">
+                    <i class="fas fa-arrows-alt-v"></i>
+                </span>
+          </button>
+        </th>
+        <th class="pf-c-table__sort">
+          <button class="pf-c-button pf-m-plain">
+            Email
+            <span class="pf-c-table__sort-indicator">
+                    <i class="fas fa-arrows-alt-v"></i>
+                </span>
+          </button>
+        </th>
+        <th class="pf-c-table__sort">
+            <button class="pf-c-button pf-m-plain">
+              Username
+              <span class="pf-c-table__sort-indicator">
+                      <i class="fas fa-arrows-alt-v"></i>
+                  </span>
+            </button>
+          </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of items; let toggle = true;">
+      <tr>
+        <td class="pf-c-table__toggle">
+          <button class="pf-c-button pf-m-plain pf-m-expanded" >
+            <i class="fas fa-angle-down"></i>
+          </button>
+        </td>
+        <td>
+        </td>
+        <th>
+            <div *ngIf="(item.attributes.imageURL !== undefined && item.attributes.imageURL.length !== 0); then userImage else defaultImage"></div>
+            <ng-template #userImage>
+              <img src="{{item.attributes.imageURL}}" class="img-responsive icon-user">
+            </ng-template>
+            <ng-template #defaultImage>
+              <img src="../../../../assets/img/profile-user.png" class="img-responsive icon-user">
+            </ng-template>
+        </th>
+        <td>
+          10
+        </td>
+        <td>
+          25
+        </td>
+        <td>
+          <a href="#">Link 1</a>
+        </td>
+      </tr>
+      <tr class="pf-c-table__expandable-row pf-m-expanded">
+        <td>
+        </td>
+        <td>
+        </td>
+        <td colspan="4">
+          <div class="pf-c-table__expandable-row-content">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->

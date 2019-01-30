@@ -154,17 +154,27 @@ export class UsersListComponent implements OnInit, OnChanges {
   //   });
   //   return matches;
   // }
-  sortUser() {
-    // console.log('sorting!');
+  sortUser(field: String) {
+    console.log('sorting!!');
     this.isAscendingSort = !this.isAscendingSort;
-    this.items.sort((item1: any, item2: any) => this.compare(item1, item2));
+    this.items.sort((item1: any, item2: any) => this.compare(item1, item2, field));
+    console.log('field is ', field);
   }
   // Sort
-  compare(item1: any, item2: any): number {
+  compare(item1: any, item2: any, field: String): number {
+    console.log('sorting via', field);
     let compValue = 0;
+    if (field === 'fullName') {
       compValue = item1.attributes.fullName.localeCompare(item2.attributes.fullName, 'en', {
         sensitivity: 'base'
       });
+    } else {
+      if (field === 'email') {
+        compValue = item1.attributes.email.localeCompare(item2.attributes.email, 'en', {
+          sensitivity: 'base'
+        });
+      }
+    }
    // console.log(compValue);
     if (!this.isAscendingSort) {
       compValue = compValue * -1;
