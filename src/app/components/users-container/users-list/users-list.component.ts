@@ -22,6 +22,7 @@ import { count } from 'rxjs/operators';
 })
 export class UsersListComponent implements OnInit, OnChanges {
   @Input() users: User[];
+  ascending: Boolean;
 
   // listConfig: ListConfig;
   // filterConfig: FilterConfig;
@@ -155,6 +156,8 @@ export class UsersListComponent implements OnInit, OnChanges {
   //   return matches;
   // }
   sortUser(field: String) {
+    this.ascending = !this.ascending;
+    console.log('ascending is ', this.ascending);
     console.log('sorting!!');
     this.isAscendingSort = !this.isAscendingSort;
     this.items.sort((item1: any, item2: any) => this.compare(item1, item2, field));
