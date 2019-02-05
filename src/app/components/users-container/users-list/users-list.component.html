@@ -67,17 +67,17 @@
 </div> -->
 <!--Expandion Ends-->
 <!-- </div> -->
-<!-- <app-pfn-toolbar  *ngIf="users?.length > 0;" (filterData)="filterUser($event)" (sortData)="sortUser()"></app-pfn-toolbar>
+<app-pfn-toolbar  *ngIf="users?.length > 0;" (filterData)="filterUser($event)" (sortData)="sortUser()"></app-pfn-toolbar>
 <div *ngIf="filterCount > 0; else noResults">
     <div class="pf-c-badge pf-m-unread">{{filterCount}} Results Found </div>
     <a href="javascript:void(0)" (click)="clearFilter()" *ngIf="filterCount > 0; else noUserFiltered">Clear All</a>
-</div> -->
-<!-- <ng-template #noResults>
+</div>
+<ng-template #noResults>
   <div *ngIf="noUser === 0">
       <div class="pf-c-badge pf-m-unread">{{filterCount}} Results Found </div>
       <a href="javascript:void(0)" (click)="clearFilter()">Clear All</a>
   </div>
-</ng-template> -->
+</ng-template>
 <!-- Table Starts -->
 <table class="pf-c-table pf-m-grid-lg" *ngIf="users?.length > 0">
   <thead>
